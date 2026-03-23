@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-forest: #2D3B2D;
+  --color-forest-light: #3D4F3D;
+  --color-forest-dark: #1E2A1E;
+  --color-sage: #9B8E6E;
+  --color-sage-light: #B5A988;
+  --color-cream: #F5F0EB;
+  --color-cream-dark: #E8E0D6;
+  --color-warmwhite: #FAF8F5;
+  --color-wood: #8B6E4E;
+  --color-wood-light: #A68B6B;
+  --color-charcoal: #2C2C2C;
+
+  --color-bg-primary: #0A0A0A;
+  --color-bg-secondary: #111111;
+  --color-bg-tertiary: #1A1A1A;
+  --color-accent: #C4A265;
+  --color-accent-hover: #D4B575;
+  --color-text-primary: #F5F0E8;
+  --color-text-secondary: #9A9590;
+  --color-text-tertiary: #5A5550;
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-charcoal);
+  background-color: var(--color-warmwhite);
+  overflow-x: hidden;
+  margin: 0;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.dark body {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+::selection {
+  background-color: var(--color-sage);
+  color: white;
+}
+
+.dark ::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg-primary);
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage);
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(196, 162, 101, 0.25);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.3);
+  cursor: pointer;
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(0.3);
+}
+
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px;
+  z-index: 1;
+}
