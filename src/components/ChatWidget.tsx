@@ -131,7 +131,7 @@ export default function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div data-lenis-prevent className="h-[340px] overflow-y-auto p-4 space-y-3 bg-cream/50 dark:bg-bg-primary/50">
+            <div data-lenis-prevent className="h-[340px] overflow-y-auto overflow-x-hidden p-4 space-y-3 bg-cream/50 dark:bg-bg-primary/50">
               {messages.map((msg) => (
                 <motion.div
                   key={msg.id}
