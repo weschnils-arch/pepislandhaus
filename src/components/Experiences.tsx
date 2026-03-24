@@ -1,38 +1,40 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslation } from '../i18n'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const experiences = [
-  {
-    title: 'Skifahren & Snowboard',
-    description: 'Erstklassige Skigebiete direkt vor der Haustür. Das Tannheimer Tal bietet perfekte Pisten für Anfänger und Profis.',
-    image: '/images/winter-2.webp',
-    season: 'Winter',
-  },
-  {
-    title: 'Wandern & Bergtouren',
-    description: 'Über 300 km markierte Wanderwege durch die spektakuläre Berglandschaft der Tannheimer Berge.',
-    image: '/images/exterior-summer-1.webp',
-    season: 'Sommer',
-  },
-  {
-    title: 'Kulinarik & Genuss',
-    description: 'Traditionelle Tiroler Küche und regionale Spezialitäten in den Gasthöfen und Almhütten der Umgebung.',
-    image: '/images/room-dining-1.webp',
-    season: 'Ganzjährig',
-  },
-  {
-    title: 'Erholung & Wellness',
-    description: 'Entspannen Sie in der Natur. Ruhige Spaziergänge, Yoga im Grünen und heilende Bergluft für Körper und Seele.',
-    image: '/images/garden-1.webp',
-    season: 'Ganzjährig',
-  },
-]
-
 export default function Experiences() {
+  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
+
+  const experiences = [
+    {
+      title: t('experiences.exp1.title'),
+      description: t('experiences.exp1.description'),
+      image: '/images/winter-2.webp',
+      season: t('experiences.exp1.season'),
+    },
+    {
+      title: t('experiences.exp2.title'),
+      description: t('experiences.exp2.description'),
+      image: '/images/exterior-summer-1.webp',
+      season: t('experiences.exp2.season'),
+    },
+    {
+      title: t('experiences.exp3.title'),
+      description: t('experiences.exp3.description'),
+      image: '/images/room-dining-1.webp',
+      season: t('experiences.exp3.season'),
+    },
+    {
+      title: t('experiences.exp4.title'),
+      description: t('experiences.exp4.description'),
+      image: '/images/garden-1.webp',
+      season: t('experiences.exp4.season'),
+    },
+  ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -61,18 +63,17 @@ export default function Experiences() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="erlebnisse" className="pt-8 md:pt-12 pb-24 md:pb-36 px-6 md:px-10 lg:px-16 bg-warmwhite dark:bg-bg-primary transition-colors duration-500">
+    <section ref={sectionRef} id={t('section.experiences')} className="pt-8 md:pt-12 pb-24 md:pb-36 px-6 md:px-10 lg:px-16 bg-warmwhite dark:bg-bg-primary transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto">
         <div className="exp-header text-center mb-16 md:mb-20">
           <p className="text-sage dark:text-accent text-[12px] font-medium tracking-[0.25em] uppercase mb-4">
-            Erlebnisse
+            {t('experiences.label')}
           </p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal dark:text-text-primary font-light tracking-[-0.02em]">
-            Das Tannheimer Tal <span className="italic text-forest dark:text-accent">erleben</span>
+            {t('experiences.title1')}<span className="italic text-forest dark:text-accent">{t('experiences.title2')}</span>
           </h2>
           <p className="text-charcoal/60 dark:text-text-secondary mt-6 max-w-xl mx-auto leading-relaxed">
-            Ob Sommer oder Winter — das Tannheimer Tal bietet zu jeder Jahreszeit
-            unvergessliche Erlebnisse für Naturliebhaber und Aktivurlauber.
+            {t('experiences.subtitle')}
           </p>
         </div>
 
@@ -115,7 +116,7 @@ export default function Experiences() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[12px] font-medium tracking-[0.15em] uppercase text-forest dark:text-accent border border-forest/20 dark:border-accent/20 px-8 py-3.5 hover:bg-forest hover:text-white dark:hover:bg-accent dark:hover:text-bg-primary transition-all duration-300"
           >
-            Mehr Aktivitäten entdecken
+            {t('experiences.moreActivities')}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>

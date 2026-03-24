@@ -1,24 +1,26 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslation } from '../i18n'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const images = [
-  { src: '/images/exterior-1.webp', label: 'Außenansicht' },
-  { src: '/images/room-living-1.webp', label: 'Wohnbereich' },
-  { src: '/images/room-bedroom-1.webp', label: 'Schlafzimmer' },
-  { src: '/images/gallery-2.webp', label: 'Stube' },
-  { src: '/images/gallery-3.webp', label: 'Küche' },
-  { src: '/images/room-balcony-1.webp', label: 'Balkon' },
-  { src: '/images/gallery-5.webp', label: 'Bad' },
-  { src: '/images/room-panorama-1.webp', label: 'Panorama' },
-]
-
 export default function Gallery() {
+  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const stripRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
+
+  const images = [
+    { src: '/images/exterior-1.webp', label: t('gallery.img1') },
+    { src: '/images/room-living-1.webp', label: t('gallery.img2') },
+    { src: '/images/room-bedroom-1.webp', label: t('gallery.img3') },
+    { src: '/images/gallery-2.webp', label: t('gallery.img4') },
+    { src: '/images/gallery-3.webp', label: t('gallery.img5') },
+    { src: '/images/room-balcony-1.webp', label: t('gallery.img6') },
+    { src: '/images/gallery-5.webp', label: t('gallery.img7') },
+    { src: '/images/room-panorama-1.webp', label: t('gallery.img8') },
+  ]
 
   useEffect(() => {
     const section = sectionRef.current
@@ -61,13 +63,13 @@ export default function Gallery() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="galerie" className="overflow-hidden bg-warmwhite dark:bg-bg-primary transition-colors duration-500 pt-8 md:pt-12">
+    <section ref={sectionRef} id={t('section.gallery')} className="overflow-hidden bg-warmwhite dark:bg-bg-primary transition-colors duration-500 pt-8 md:pt-12">
       <div ref={headerRef} className="text-center mb-10 px-6 md:px-[clamp(2rem,8vw,10rem)]">
         <p className="text-sage dark:text-accent/80 text-[12px] font-medium tracking-[0.25em] uppercase mb-5">
-          Eindrücke
+          {t('gallery.label')}
         </p>
         <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl text-charcoal dark:text-text-primary tracking-[-0.02em]">
-          Momente im Landhaus
+          {t('gallery.title')}
         </h2>
       </div>
 

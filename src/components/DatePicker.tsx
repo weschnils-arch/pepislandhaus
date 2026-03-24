@@ -1,10 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-
-const MONTHS_DE = [
-  'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
-  'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
-]
-const DAYS_DE = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
+import { useTranslation } from '../i18n'
 
 interface DatePickerProps {
   value: string
@@ -14,12 +9,16 @@ interface DatePickerProps {
 }
 
 export default function DatePicker({ value, onChange, label, minDate }: DatePickerProps) {
+  const { t } = useTranslation()
   const [open, setOpen] = useState(false)
   const [viewDate, setViewDate] = useState(() => {
     if (value) return new Date(value)
     return new Date()
   })
   const ref = useRef<HTMLDivElement>(null)
+
+  const months = Array.from({ length: 12 }, (_, i) => t(`datepicker.months.${i}`))
+  const days = Array.from({ length: 7 }, (_, i) => t(`datepicker.days.${i}`))
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -40,9 +39,9 @@ export default function DatePicker({ value, onChange, label, minDate }: DatePick
 
   const daysInMonth = new Date(year, month + 1, 0).getDate()
 
-  const days: (number | null)[] = []
-  for (let i = 0; i < startDay; i++) days.push(null)
-  for (let i = 1; i <= daysInMonth; i++) days.push(i)
+  const calDays: (number | null)[] = []
+  for (let i = 0; i < startDay; i++) calDays.push(null)
+  for (let i = 1; i <= daysInMonth; i++) calDays.push(i)
 
   const prevMonth = () => setViewDate(new Date(year, month - 1, 1))
   const nextMonth = () => setViewDate(new Date(year, month + 1, 1))
@@ -89,7 +88,7 @@ export default function DatePicker({ value, onChange, label, minDate }: DatePick
         className="w-full bg-white text-charcoal px-4 py-3 text-sm rounded-sm text-left flex items-center justify-between focus:ring-2 focus:ring-sage/50 transition-shadow"
       >
         <span className={value ? 'text-charcoal' : 'text-charcoal/40'}>
-          {value ? formatDisplay(value) : 'TT.MM.JJJJ'}
+          {value ? formatDisplay(value) : t('hero.datePlaceholder')}
         </span>
         <svg className="w-4 h-4 text-charcoal/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -109,7 +108,7 @@ export default function DatePicker({ value, onChange, label, minDate }: DatePick
               </svg>
             </button>
             <span className="font-serif text-sm text-charcoal dark:text-text-primary">
-              {MONTHS_DE[month]} {year}
+              {months[month]} {year}
             </span>
             <button
               type="button"
@@ -123,7 +122,7 @@ export default function DatePicker({ value, onChange, label, minDate }: DatePick
           </div>
 
           <div className="grid grid-cols-7 gap-0.5 mb-2">
-            {DAYS_DE.map((d) => (
+            {days.map((d) => (
               <div key={d} className="text-center text-[10px] font-medium tracking-wider text-charcoal/40 dark:text-text-tertiary py-1">
                 {d}
               </div>
@@ -131,7 +130,7 @@ export default function DatePicker({ value, onChange, label, minDate }: DatePick
           </div>
 
           <div className="grid grid-cols-7 gap-0.5">
-            {days.map((day, i) => (
+            {calDays.map((day, i) => (
               <div key={i} className="aspect-square flex items-center justify-center">
                 {day && (
                   <button

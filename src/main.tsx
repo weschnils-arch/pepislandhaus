@@ -1,8 +1,10 @@
 import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Lenis from '@studio-freight/lenis'
 import './index.css'
 import App from './App'
+import { DEFAULT_LANG } from './i18n'
 
 function Root() {
   useEffect(() => {
@@ -21,7 +23,14 @@ function Root() {
     return () => lenis.destroy()
   }, [])
 
-  return <App />
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/:lang/*" element={<App />} />
+        <Route path="*" element={<Navigate to={`/${DEFAULT_LANG}/`} replace />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 createRoot(document.getElementById('root')!).render(

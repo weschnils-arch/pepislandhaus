@@ -1,46 +1,48 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslation } from '../i18n'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const rooms = [
-  {
-    name: 'Alpenpanorama Suite',
-    description: 'Großzügige Suite mit freigelegten Holzbalken, offenem Wohnbereich und atemberaubendem Bergblick. Ideal für Paare und Familien.',
-    size: '65 m²',
-    guests: '2–4 Gäste',
-    features: ['Bergblick', 'Balkon', 'Küchenzeile', 'Smart TV'],
-    image: '/images/room-living-1.webp',
-  },
-  {
-    name: 'Tiroler Stube',
-    description: 'Traditionell eingerichtete Wohnung mit handgefertigten Holzmöbeln und gemütlichem Kachelofen-Flair. Authentisch und komfortabel.',
-    size: '55 m²',
-    guests: '2–3 Gäste',
-    features: ['Holzinterieur', 'Terrasse', 'Küche', 'WLAN'],
-    image: '/images/room-bedroom-2.webp',
-  },
-  {
-    name: 'Bergkristall',
-    description: 'Helle, moderne Ferienwohnung mit bodentiefen Fenstern und zeitgenössischem Design. Der perfekte Rückzugsort.',
-    size: '50 m²',
-    guests: '2–3 Gäste',
-    features: ['Gartenblick', 'Terrasse', 'Küche', 'Bad mit Dusche'],
-    image: '/images/room-suite-1.webp',
-  },
-  {
-    name: 'Enzian Apartment',
-    description: 'Kompaktes Apartment für naturverbundene Gäste. Funktional eingerichtet mit allem Komfort für einen unvergesslichen Aufenthalt.',
-    size: '40 m²',
-    guests: '2 Gäste',
-    features: ['Bergblick', 'Küchenzeile', 'Bad', 'Parkplatz'],
-    image: '/images/room-detail-5.webp',
-  },
-]
-
 export default function Rooms() {
+  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
+
+  const rooms = [
+    {
+      name: t('rooms.room1.name'),
+      description: t('rooms.room1.description'),
+      size: t('rooms.room1.size'),
+      guests: t('rooms.room1.guests'),
+      features: [t('rooms.room1.feature1'), t('rooms.room1.feature2'), t('rooms.room1.feature3'), t('rooms.room1.feature4')],
+      image: '/images/room-living-1.webp',
+    },
+    {
+      name: t('rooms.room2.name'),
+      description: t('rooms.room2.description'),
+      size: t('rooms.room2.size'),
+      guests: t('rooms.room2.guests'),
+      features: [t('rooms.room2.feature1'), t('rooms.room2.feature2'), t('rooms.room2.feature3'), t('rooms.room2.feature4')],
+      image: '/images/room-bedroom-2.webp',
+    },
+    {
+      name: t('rooms.room3.name'),
+      description: t('rooms.room3.description'),
+      size: t('rooms.room3.size'),
+      guests: t('rooms.room3.guests'),
+      features: [t('rooms.room3.feature1'), t('rooms.room3.feature2'), t('rooms.room3.feature3'), t('rooms.room3.feature4')],
+      image: '/images/room-suite-1.webp',
+    },
+    {
+      name: t('rooms.room4.name'),
+      description: t('rooms.room4.description'),
+      size: t('rooms.room4.size'),
+      guests: t('rooms.room4.guests'),
+      features: [t('rooms.room4.feature1'), t('rooms.room4.feature2'), t('rooms.room4.feature3'), t('rooms.room4.feature4')],
+      image: '/images/room-detail-5.webp',
+    },
+  ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -69,19 +71,18 @@ export default function Rooms() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="zimmer" className="pt-8 md:pt-12 pb-24 md:pb-36 bg-cream dark:!bg-[#0A0A0A] relative transition-colors duration-500">
+    <section ref={sectionRef} id={t('section.rooms')} className="pt-8 md:pt-12 pb-24 md:pb-36 bg-cream dark:!bg-[#0A0A0A] relative transition-colors duration-500">
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
         <div className="rooms-header text-center mb-16 md:mb-20">
           <p className="text-sage dark:text-accent text-[12px] font-medium tracking-[0.25em] uppercase mb-4">
-            Unterkünfte
+            {t('rooms.label')}
           </p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal dark:text-text-primary font-light tracking-[-0.02em]">
-            Unsere <span className="italic text-forest dark:text-accent">Zimmer</span>
+            {t('rooms.title1')}<span className="italic text-forest dark:text-accent">{t('rooms.title2')}</span>
           </h2>
           <p className="text-charcoal/60 dark:text-text-secondary mt-6 max-w-xl mx-auto leading-relaxed">
-            Jede unserer Ferienwohnungen vereint alpinen Charme mit modernem Komfort —
-            eingerichtet mit natürlichen Materialien und viel Liebe zum Detail.
+            {t('rooms.subtitle')}
           </p>
         </div>
 
@@ -131,10 +132,10 @@ export default function Rooms() {
                   ))}
                 </div>
                 <a
-                  href="#buchen"
+                  href={`#${t('section.book')}`}
                   className="inline-block text-[12px] font-medium tracking-[0.15em] uppercase text-forest dark:text-accent border-b border-forest/30 dark:border-accent/30 pb-1 hover:border-forest dark:hover:border-accent transition-colors"
                 >
-                  Verfügbarkeit prüfen
+                  {t('rooms.checkAvailability')}
                 </a>
               </div>
             </div>

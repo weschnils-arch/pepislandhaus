@@ -1,4 +1,17 @@
+import { useTranslation } from '../i18n'
+
 export default function Footer() {
+  const { t } = useTranslation()
+
+  const navLinks = [
+    { label: t('nav.welcome'), href: `#${t('section.welcome')}` },
+    { label: t('nav.rooms'), href: `#${t('section.rooms')}` },
+    { label: t('nav.experiences'), href: `#${t('section.experiences')}` },
+    { label: t('nav.gallery'), href: `#${t('section.gallery')}` },
+    { label: t('nav.location'), href: `#${t('section.location')}` },
+    { label: t('nav.contact'), href: `#${t('section.contact')}` },
+  ]
+
   return (
     <footer className="bg-forest-dark dark:bg-bg-primary text-white/60 relative transition-colors duration-500">
       <div className="absolute inset-0 grain" />
@@ -10,23 +23,16 @@ export default function Footer() {
               Pepi's Landhaus
             </span>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-              Luxuriöse Ferienwohnungen mit alpinem Charme im Herzen des Tannheimer Tals.
+              {t('footer.description')}
             </p>
           </div>
 
           <div>
             <h4 className="text-white/80 text-[12px] font-medium tracking-[0.15em] uppercase mb-5">
-              Navigation
+              {t('footer.nav')}
             </h4>
             <div className="space-y-3">
-              {[
-                { label: 'Willkommen', href: '#willkommen' },
-                { label: 'Zimmer', href: '#zimmer' },
-                { label: 'Erlebnisse', href: '#erlebnisse' },
-                { label: 'Galerie', href: '#galerie' },
-                { label: 'Lage', href: '#lage' },
-                { label: 'Kontakt', href: '#kontakt' },
-              ].map((link) => (
+              {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -40,19 +46,19 @@ export default function Footer() {
 
           <div>
             <h4 className="text-white/80 text-[12px] font-medium tracking-[0.15em] uppercase mb-5">
-              Kontakt
+              {t('footer.contact')}
             </h4>
             <div className="space-y-3 text-sm text-white/40">
               <p>Tannheimer Tal</p>
-              <p>Tirol, Österreich</p>
-              <p className="pt-2">+43 (0) 5675 XXXXX</p>
-              <p>info@pepis-landhaus.at</p>
+              <p>Tirol, {t('location.address.country')}</p>
+              <p className="pt-2">{t('contact.info.phone')}</p>
+              <p>{t('contact.info.email')}</p>
             </div>
           </div>
 
           <div>
             <h4 className="text-white/80 text-[12px] font-medium tracking-[0.15em] uppercase mb-5">
-              Entdecken
+              {t('footer.discover')}
             </h4>
             <div className="space-y-3 text-sm">
               <a
@@ -61,7 +67,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="block text-white/40 hover:text-white/70 transition-colors"
               >
-                Tannheimer Tal Tourismus
+                {t('footer.tannheimerTourism')}
               </a>
               <a
                 href="https://www.booking.com"
@@ -77,7 +83,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="block text-white/40 hover:text-white/70 transition-colors"
               >
-                Tannheimertal Buchung
+                {t('footer.booking')}
               </a>
             </div>
           </div>
@@ -85,17 +91,17 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-xs">
-            &copy; {new Date().getFullYear()} Pepi's Landhaus. Alle Rechte vorbehalten.
+            &copy; {new Date().getFullYear()} {t('footer.copyright')}
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-white/30 text-xs hover:text-white/50 transition-colors">
-              Impressum
+              {t('footer.imprint')}
             </a>
             <a href="#" className="text-white/30 text-xs hover:text-white/50 transition-colors">
-              Datenschutz
+              {t('footer.privacy')}
             </a>
             <a href="#" className="text-white/30 text-xs hover:text-white/50 transition-colors">
-              AGB
+              {t('footer.terms')}
             </a>
           </div>
         </div>

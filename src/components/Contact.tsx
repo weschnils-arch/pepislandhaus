@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslation } from '../i18n'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Contact() {
+  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const [formData, setFormData] = useState({
     name: '',
@@ -49,9 +51,9 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = encodeURIComponent('Anfrage - Pepi\'s Landhaus')
+    const subject = encodeURIComponent(t('contact.emailSubject'))
     const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nTelefon: ${formData.phone}\nAnreise: ${formData.arrival}\nAbreise: ${formData.departure}\nGäste: ${formData.guests}\n\nNachricht:\n${formData.message}`
+      `${t('contact.emailBody.name')}: ${formData.name}\n${t('contact.emailBody.email')}: ${formData.email}\n${t('contact.emailBody.phone')}: ${formData.phone}\n${t('contact.emailBody.arrival')}: ${formData.arrival}\n${t('contact.emailBody.departure')}: ${formData.departure}\n${t('contact.emailBody.guests')}: ${formData.guests}\n\n${t('contact.emailBody.message')}:\n${formData.message}`
     )
     window.location.href = `mailto:info@pepis-landhaus.at?subject=${subject}&body=${body}`
   }
@@ -59,20 +61,19 @@ export default function Contact() {
   const inputClasses = 'w-full bg-transparent border border-charcoal/15 dark:border-text-primary/12 px-4 py-3 text-sm text-charcoal dark:text-text-primary outline-none focus:border-forest dark:focus:border-accent transition-colors placeholder:text-charcoal/30 dark:placeholder:text-text-tertiary'
 
   return (
-    <section ref={sectionRef} id="kontakt" className="pt-8 md:pt-12 pb-24 md:pb-36 bg-cream dark:!bg-[#0A0A0A] relative transition-colors duration-500">
+    <section ref={sectionRef} id={t('section.contact')} className="pt-8 md:pt-12 pb-24 md:pb-36 bg-cream dark:!bg-[#0A0A0A] relative transition-colors duration-500">
       <div className="absolute inset-0 grain" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
         <div className="contact-header text-center mb-16 md:mb-20">
           <p className="text-sage dark:text-accent text-[12px] font-medium tracking-[0.25em] uppercase mb-4">
-            Anfrage
+            {t('contact.label')}
           </p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal dark:text-text-primary font-light tracking-[-0.02em]">
-            Kontaktieren <span className="italic text-forest dark:text-accent">Sie uns</span>
+            {t('contact.title1')}<span className="italic text-forest dark:text-accent">{t('contact.title2')}</span>
           </h2>
           <p className="text-charcoal/60 dark:text-text-secondary mt-6 max-w-xl mx-auto leading-relaxed">
-            Haben Sie Fragen oder möchten eine individuelle Anfrage stellen?
-            Wir freuen uns auf Ihre Nachricht.
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -81,7 +82,7 @@ export default function Contact() {
             <div className="grid sm:grid-cols-2 gap-5">
               <input
                 type="text"
-                placeholder="Name *"
+                placeholder={t('contact.name')}
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -89,7 +90,7 @@ export default function Contact() {
               />
               <input
                 type="email"
-                placeholder="E-Mail *"
+                placeholder={t('contact.email')}
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -99,7 +100,7 @@ export default function Contact() {
 
             <input
               type="tel"
-              placeholder="Telefon"
+              placeholder={t('contact.phone')}
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               className={inputClasses}
@@ -108,7 +109,7 @@ export default function Contact() {
             <div className="grid sm:grid-cols-3 gap-5">
               <div>
                 <label className="block text-charcoal/50 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase mb-2">
-                  Anreise
+                  {t('contact.arrival')}
                 </label>
                 <input
                   type="date"
@@ -119,7 +120,7 @@ export default function Contact() {
               </div>
               <div>
                 <label className="block text-charcoal/50 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase mb-2">
-                  Abreise
+                  {t('contact.departure')}
                 </label>
                 <input
                   type="date"
@@ -130,14 +131,14 @@ export default function Contact() {
               </div>
               <div>
                 <label className="block text-charcoal/50 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase mb-2">
-                  Anzahl Gäste
+                  {t('contact.guestCount')}
                 </label>
                 <select
                   value={formData.guests}
                   onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
                   className={`${inputClasses} appearance-none`}
                 >
-                  <option value="">Wählen</option>
+                  <option value="">{t('contact.guestSelect')}</option>
                   {[1, 2, 3, 4, 5, 6].map((n) => (
                     <option key={n} value={n}>{n}</option>
                   ))}
@@ -146,7 +147,7 @@ export default function Contact() {
             </div>
 
             <textarea
-              placeholder="Ihre Nachricht..."
+              placeholder={t('contact.message')}
               rows={5}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -157,45 +158,44 @@ export default function Contact() {
               type="submit"
               className="bg-forest dark:bg-accent text-white dark:text-bg-primary text-[13px] font-medium tracking-[0.15em] uppercase px-10 py-4 hover:bg-forest-light dark:hover:bg-accent-hover transition-colors duration-300"
             >
-              Anfrage senden
+              {t('contact.submit')}
             </button>
           </form>
 
           <div className="contact-info lg:col-span-2 space-y-10">
             <div>
-              <h3 className="font-serif text-xl text-charcoal dark:text-text-primary font-light mb-4">Direkt buchen</h3>
+              <h3 className="font-serif text-xl text-charcoal dark:text-text-primary font-light mb-4">{t('contact.directBook.title')}</h3>
               <p className="text-charcoal/60 dark:text-text-secondary text-sm leading-relaxed mb-4">
-                Buchen Sie direkt über unsere Website und profitieren Sie von den besten Preisen
-                ohne Vermittlungsgebühren.
+                {t('contact.directBook.text')}
               </p>
               <a
-                href="#buchen"
+                href={`#${t('section.book')}`}
                 className="inline-block text-[12px] font-medium tracking-[0.15em] uppercase text-forest dark:text-accent border border-forest/20 dark:border-accent/20 px-6 py-3 hover:bg-forest hover:text-white dark:hover:bg-accent dark:hover:text-bg-primary transition-all duration-300"
               >
-                Verfügbarkeit prüfen
+                {t('contact.directBook.cta')}
               </a>
             </div>
 
             <div className="border-t border-charcoal/10 dark:border-text-primary/10 pt-8">
-              <h3 className="font-serif text-xl text-charcoal dark:text-text-primary font-light mb-4">Kontaktdaten</h3>
+              <h3 className="font-serif text-xl text-charcoal dark:text-text-primary font-light mb-4">{t('contact.info.title')}</h3>
               <div className="space-y-3 text-sm text-charcoal/60">
                 <p>
-                  <span className="text-charcoal/40 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase block mb-1">Telefon</span>
-                  +43 (0) 5675 XXXXX
+                  <span className="text-charcoal/40 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase block mb-1">{t('contact.info.phoneLabel')}</span>
+                  {t('contact.info.phone')}
                 </p>
                 <p>
-                  <span className="text-charcoal/40 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase block mb-1">E-Mail</span>
-                  info@pepis-landhaus.at
+                  <span className="text-charcoal/40 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase block mb-1">{t('contact.info.emailLabel')}</span>
+                  {t('contact.info.email')}
                 </p>
                 <p>
-                  <span className="text-charcoal/40 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase block mb-1">Adresse</span>
-                  Tannheimer Tal, Tirol, Österreich
+                  <span className="text-charcoal/40 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase block mb-1">{t('contact.info.addressLabel')}</span>
+                  {t('contact.info.address')}
                 </p>
               </div>
             </div>
 
             <div className="border-t border-charcoal/10 dark:border-text-primary/10 pt-8">
-              <h3 className="font-serif text-xl text-charcoal dark:text-text-primary font-light mb-4">Auch buchbar über</h3>
+              <h3 className="font-serif text-xl text-charcoal dark:text-text-primary font-light mb-4">{t('contact.alsoOn.title')}</h3>
               <div className="flex flex-wrap gap-3">
                 <a
                   href="https://www.booking.com"

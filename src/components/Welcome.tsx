@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslation } from '../i18n'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Welcome() {
+  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -55,45 +57,41 @@ export default function Welcome() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="willkommen" className="py-24 md:py-36 lg:py-44 px-6 md:px-10 lg:px-16 bg-warmwhite dark:bg-bg-primary transition-colors duration-500">
+    <section ref={sectionRef} id={t('section.welcome')} className="py-24 md:py-36 lg:py-44 px-6 md:px-10 lg:px-16 bg-warmwhite dark:bg-bg-primary transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="space-y-8">
             <p className="welcome-label text-sage dark:text-accent text-[12px] font-medium tracking-[0.25em] uppercase">
-              Willkommen
+              {t('welcome.label')}
             </p>
 
             <h2 className="welcome-title font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal dark:text-text-primary font-light leading-[1.1] tracking-[-0.02em]">
-              Ihr Zuhause
+              {t('welcome.title1')}
               <br />
-              <span className="italic text-forest dark:text-accent">in den Bergen</span>
+              <span className="italic text-forest dark:text-accent">{t('welcome.title2')}</span>
             </h2>
 
             <div className="welcome-text space-y-5 max-w-lg">
               <p className="text-charcoal/70 dark:text-text-secondary leading-relaxed">
-                Pepi's Landhaus verbindet traditionelle Tiroler Baukunst mit modernem Komfort.
-                Unser historisches Landhaus im Herzen des Tannheimer Tals wurde mit viel Liebe
-                zum Detail renoviert und bietet Ihnen exklusive Ferienwohnungen auf höchstem Niveau.
+                {t('welcome.text1')}
               </p>
               <p className="text-charcoal/70 dark:text-text-secondary leading-relaxed">
-                Massive Holzbalken, warme Naturmaterialien und ein atemberaubender Blick auf die
-                umliegende Bergwelt schaffen eine Atmosphäre, in der Sie den Alltag vergessen
-                und die Seele baumeln lassen können.
+                {t('welcome.text2')}
               </p>
             </div>
 
             <div className="welcome-text flex flex-wrap gap-12 pt-4">
               <div>
-                <span className="font-serif text-3xl md:text-4xl text-forest dark:text-accent font-light">4</span>
-                <p className="text-charcoal/50 dark:text-text-tertiary text-[12px] tracking-[0.1em] uppercase mt-1">Ferienwohnungen</p>
+                <span className="font-serif text-3xl md:text-4xl text-forest dark:text-accent font-light">{t('welcome.stat1.value')}</span>
+                <p className="text-charcoal/50 dark:text-text-tertiary text-[12px] tracking-[0.1em] uppercase mt-1">{t('welcome.stat1.label')}</p>
               </div>
               <div>
-                <span className="font-serif text-3xl md:text-4xl text-forest dark:text-accent font-light">12</span>
-                <p className="text-charcoal/50 dark:text-text-tertiary text-[12px] tracking-[0.1em] uppercase mt-1">Gäste maximal</p>
+                <span className="font-serif text-3xl md:text-4xl text-forest dark:text-accent font-light">{t('welcome.stat2.value')}</span>
+                <p className="text-charcoal/50 dark:text-text-tertiary text-[12px] tracking-[0.1em] uppercase mt-1">{t('welcome.stat2.label')}</p>
               </div>
               <div>
-                <span className="font-serif text-3xl md:text-4xl text-forest dark:text-accent font-light">365</span>
-                <p className="text-charcoal/50 dark:text-text-tertiary text-[12px] tracking-[0.1em] uppercase mt-1">Tage Saison</p>
+                <span className="font-serif text-3xl md:text-4xl text-forest dark:text-accent font-light">{t('welcome.stat3.value')}</span>
+                <p className="text-charcoal/50 dark:text-text-tertiary text-[12px] tracking-[0.1em] uppercase mt-1">{t('welcome.stat3.label')}</p>
               </div>
             </div>
           </div>
@@ -103,7 +101,7 @@ export default function Welcome() {
               <div className="overflow-hidden">
                 <img
                   src="/images/exterior-aerial-1.webp"
-                  alt="Pepi's Landhaus von oben"
+                  alt={t('welcome.img1Alt')}
                   className="w-full h-[280px] md:h-[340px] object-cover hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
@@ -111,7 +109,7 @@ export default function Welcome() {
               <div className="overflow-hidden">
                 <img
                   src="/images/room-bedroom-2.webp"
-                  alt="Gemütliches Schlafzimmer"
+                  alt={t('welcome.img2Alt')}
                   className="w-full h-[200px] md:h-[240px] object-cover hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
@@ -121,7 +119,7 @@ export default function Welcome() {
               <div className="overflow-hidden">
                 <img
                   src="/images/room-living-1.webp"
-                  alt="Wohnbereich mit Holzbalken"
+                  alt={t('welcome.img3Alt')}
                   className="w-full h-[200px] md:h-[240px] object-cover hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
@@ -129,7 +127,7 @@ export default function Welcome() {
               <div className="overflow-hidden">
                 <img
                   src="/images/exterior-aerial-2.webp"
-                  alt="Landhaus im Sommer"
+                  alt={t('welcome.img4Alt')}
                   className="w-full h-[280px] md:h-[340px] object-cover hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />

@@ -1,14 +1,7 @@
 import { useState, useEffect } from 'react'
 import clsx from 'clsx'
-
-const navLinks = [
-  { label: 'Willkommen', href: '#willkommen' },
-  { label: 'Zimmer', href: '#zimmer' },
-  { label: 'Erlebnisse', href: '#erlebnisse' },
-  { label: 'Galerie', href: '#galerie' },
-  { label: 'Lage', href: '#lage' },
-  { label: 'Kontakt', href: '#kontakt' },
-]
+import { useTranslation } from '../i18n'
+import LanguageSwitcher from './LanguageSwitcher'
 
 interface NavbarProps {
   darkMode: boolean
@@ -16,8 +9,18 @@ interface NavbarProps {
 }
 
 export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
+  const { t } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const navLinks = [
+    { label: t('nav.welcome'), href: `#${t('section.welcome')}` },
+    { label: t('nav.rooms'), href: `#${t('section.rooms')}` },
+    { label: t('nav.experiences'), href: `#${t('section.experiences')}` },
+    { label: t('nav.gallery'), href: `#${t('section.gallery')}` },
+    { label: t('nav.location'), href: `#${t('section.location')}` },
+    { label: t('nav.contact'), href: `#${t('section.contact')}` },
+  ]
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80)
@@ -37,12 +40,6 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
     ? darkMode ? 'text-text-primary' : 'text-charcoal'
     : 'text-white'
 
-  const hamburgerColor = mobileOpen
-    ? 'bg-white'
-    : scrolled
-      ? darkMode ? 'bg-text-primary' : 'bg-charcoal'
-      : 'bg-white'
-
   return (
     <nav
       className={clsx(
@@ -57,7 +54,10 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
         <div className="flex items-center justify-between h-20 md:h-24">
           <a href="#" className="relative z-50 font-serif text-xl md:text-2xl font-light tracking-wide leading-none">
-            <span className={clsx('transition-colors duration-300', textColor)}>
+            <span className={clsx(
+              'transition-colors duration-300',
+              mobileOpen ? 'text-white' : textColor
+            )}>
               Pepi's Landhaus
             </span>
           </a>
@@ -76,13 +76,15 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
               </a>
             ))}
 
+            <LanguageSwitcher variant={scrolled ? 'dark' : 'light'} />
+
             <button
               onClick={onToggleDark}
               className={clsx(
                 'w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 hover:opacity-70',
                 textColor
               )}
-              aria-label={darkMode ? 'Hellmodus' : 'Dunkelmodus'}
+              aria-label={darkMode ? t('nav.lightMode') : t('nav.darkMode')}
             >
               {darkMode ? (
                 <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -97,7 +99,7 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
             </button>
 
             <a
-              href="#buchen"
+              href={`#${t('section.book')}`}
               className={clsx(
                 'text-[13px] font-medium tracking-[0.15em] uppercase px-6 py-2.5 transition-all duration-300',
                 scrolled
@@ -107,15 +109,20 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
                   : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
               )}
             >
-              Buchen
+              {t('nav.book')}
             </a>
           </div>
 
           <div className="flex items-center gap-3 lg:hidden">
+            <LanguageSwitcher
+              variant={mobileOpen ? 'light' : scrolled ? 'dark' : 'light'}
+              className="relative z-50"
+            />
+
             <button
               onClick={onToggleDark}
               className={clsx('relative z-50 w-9 h-9 flex items-center justify-center', mobileOpen ? 'text-white' : textColor)}
-              aria-label={darkMode ? 'Hellmodus' : 'Dunkelmodus'}
+              aria-label={darkMode ? t('nav.lightMode') : t('nav.darkMode')}
             >
               {darkMode ? (
                 <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -132,10 +139,22 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-1.5"
-              aria-label="Menü"
+              aria-label={t('nav.menu')}
             >
-              <span className={clsx('w-6 h-[1.5px] transition-all duration-300', mobileOpen ? 'rotate-45 translate-y-[4.5px]' : '', hamburgerColor)} />
-              <span className={clsx('w-6 h-[1.5px] transition-all duration-300', mobileOpen ? '-rotate-45 -translate-y-[4.5px]' : '', hamburgerColor)} />
+              <span className={clsx(
+                'w-6 h-[1.5px] transition-all duration-300',
+                mobileOpen ? 'rotate-45 translate-y-[4.5px] bg-white' : '',
+                !mobileOpen && (scrolled
+                  ? darkMode ? 'bg-text-primary' : 'bg-charcoal'
+                  : 'bg-white')
+              )} />
+              <span className={clsx(
+                'w-6 h-[1.5px] transition-all duration-300',
+                mobileOpen ? '-rotate-45 -translate-y-[4.5px] bg-white' : '',
+                !mobileOpen && (scrolled
+                  ? darkMode ? 'bg-text-primary' : 'bg-charcoal'
+                  : 'bg-white')
+              )} />
             </button>
           </div>
         </div>
@@ -163,14 +182,14 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
             </a>
           ))}
           <a
-            href="#buchen"
+            href={`#${t('section.book')}`}
             onClick={() => setMobileOpen(false)}
             className={clsx(
               'mt-4 text-sm font-medium tracking-[0.15em] uppercase px-8 py-3 transition-colors',
               darkMode ? 'bg-accent text-bg-primary hover:bg-accent-hover' : 'bg-sage text-white hover:bg-sage-light'
             )}
           >
-            Jetzt Buchen
+            {t('nav.bookNow')}
           </a>
         </div>
       </div>

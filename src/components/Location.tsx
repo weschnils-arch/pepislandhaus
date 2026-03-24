@@ -1,20 +1,22 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslation } from '../i18n'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const highlights = [
-  { icon: '⛷', label: 'Skigebiet', distance: '3 min' },
-  { icon: '🏔', label: 'Wanderwege', distance: 'Direkt' },
-  { icon: '🛒', label: 'Supermarkt', distance: '5 min' },
-  { icon: '🍽', label: 'Restaurant', distance: '2 min' },
-  { icon: '🏊', label: 'Haldensee', distance: '8 min' },
-  { icon: '⛪', label: 'Ortszentrum', distance: '3 min' },
-]
-
 export default function Location() {
+  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
+
+  const highlights = [
+    { icon: '\u26F7', label: t('location.highlight1.label'), distance: t('location.highlight1.distance') },
+    { icon: '\u{1F3D4}', label: t('location.highlight2.label'), distance: t('location.highlight2.distance') },
+    { icon: '\u{1F6D2}', label: t('location.highlight3.label'), distance: t('location.highlight3.distance') },
+    { icon: '\u{1F37D}', label: t('location.highlight4.label'), distance: t('location.highlight4.distance') },
+    { icon: '\u{1F3CA}', label: t('location.highlight5.label'), distance: t('location.highlight5.distance') },
+    { icon: '\u26EA', label: t('location.highlight6.label'), distance: t('location.highlight6.distance') },
+  ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -48,18 +50,17 @@ export default function Location() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="lage" className="pt-8 md:pt-12 pb-24 md:pb-36 px-6 md:px-10 lg:px-16 bg-warmwhite dark:bg-bg-primary transition-colors duration-500">
+    <section ref={sectionRef} id={t('section.location')} className="pt-8 md:pt-12 pb-24 md:pb-36 px-6 md:px-10 lg:px-16 bg-warmwhite dark:bg-bg-primary transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto">
         <div className="loc-header text-center mb-16 md:mb-20">
           <p className="text-sage dark:text-accent text-[12px] font-medium tracking-[0.25em] uppercase mb-4">
-            Anreise
+            {t('location.label')}
           </p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal dark:text-text-primary font-light tracking-[-0.02em]">
-            Unsere <span className="italic text-forest dark:text-accent">Lage</span>
+            {t('location.title1')}<span className="italic text-forest dark:text-accent">{t('location.title2')}</span>
           </h2>
-          <p className="text-charcoal/60 dark:text-text-secondary dark:text-text-secondary mt-6 max-w-xl mx-auto leading-relaxed">
-            Eingebettet in die malerische Landschaft des Tannheimer Tals, erreichen
-            Sie uns bequem von München, Innsbruck oder Zürich.
+          <p className="text-charcoal/60 dark:text-text-secondary mt-6 max-w-xl mx-auto leading-relaxed">
+            {t('location.subtitle')}
           </p>
         </div>
 
@@ -73,7 +74,7 @@ export default function Location() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Standort Pepi's Landhaus"
+              title={t('location.mapTitle')}
             />
           </div>
 
@@ -81,12 +82,12 @@ export default function Location() {
             <div className="space-y-8">
               <div>
                 <h3 className="font-serif text-2xl md:text-3xl text-charcoal dark:text-text-primary font-light mb-3">
-                  Pepi's Landhaus
+                  {t('location.address.name')}
                 </h3>
-                <p className="text-charcoal/60 dark:text-text-secondary dark:text-text-secondary text-sm leading-relaxed">
-                  Tannheimer Tal, Tirol
+                <p className="text-charcoal/60 dark:text-text-secondary text-sm leading-relaxed">
+                  {t('location.address.region')}
                   <br />
-                  Österreich
+                  {t('location.address.country')}
                 </p>
               </div>
 
@@ -104,12 +105,12 @@ export default function Location() {
 
               <div className="pt-4 space-y-4">
                 <h4 className="text-[12px] font-medium tracking-[0.15em] uppercase text-charcoal/70 dark:text-text-tertiary">
-                  Anfahrt
+                  {t('location.directions.title')}
                 </h4>
                 <div className="space-y-2 text-sm text-charcoal/60 dark:text-text-secondary">
-                  <p>Ab München: ca. 2 Stunden</p>
-                  <p>Ab Innsbruck: ca. 1,5 Stunden</p>
-                  <p>Ab Zürich: ca. 3 Stunden</p>
+                  <p>{t('location.directions.munich')}</p>
+                  <p>{t('location.directions.innsbruck')}</p>
+                  <p>{t('location.directions.zurich')}</p>
                 </div>
               </div>
             </div>

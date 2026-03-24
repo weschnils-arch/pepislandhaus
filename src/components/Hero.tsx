@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import DatePicker from './DatePicker'
+import { useTranslation } from '../i18n'
 
 export default function Hero() {
+  const { t } = useTranslation()
   const heroRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -58,7 +60,7 @@ export default function Hero() {
   }
 
   return (
-    <section ref={heroRef} id="buchen" className="relative h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden">
+    <section ref={heroRef} id={t('section.book')} className="relative h-[100svh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
           src="/images/hero-bedroom.webp"
@@ -80,28 +82,28 @@ export default function Hero() {
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <p
           ref={subtitleRef}
-          className="text-white/80 text-[13px] md:text-sm font-medium tracking-[0.3em] uppercase mb-4 md:mb-6"
+          className="text-white/80 text-[11px] md:text-sm font-medium tracking-[0.3em] uppercase mb-3 md:mb-6"
         >
-          Tannheimer Tal &middot; Tirol
+          {t('hero.location')}
         </p>
 
         <h1
           ref={titleRef}
-          className="font-serif text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[110px] font-light leading-[0.95] tracking-[-0.02em] mb-6 md:mb-8"
+          className="font-serif text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[110px] font-light leading-[0.95] tracking-[-0.02em] mb-4 md:mb-8"
         >
-          Pepi's Landhaus
+          {t('hero.title')}
         </h1>
 
-        <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed mb-12 md:mb-16 whitespace-nowrap">
-          Luxuriöse Ferienwohnungen mit alpinem Charme inmitten der Tiroler Bergwelt
+        <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed mb-8 md:mb-16">
+          {t('hero.tagline')}
         </p>
 
         <div
           ref={bookingRef}
           className="w-full max-w-3xl mx-auto"
         >
-          <p className="font-serif text-white text-xl md:text-2xl italic mb-5">
-            ...und wann besuchen Sie uns?
+          <p className="font-serif text-white text-lg md:text-2xl italic mb-4">
+            {t('hero.bookingPrompt')}
           </p>
 
           <div className="bg-forest/40 backdrop-blur-xl border border-white/10 rounded-sm p-3 md:p-4 shadow-2xl">
@@ -109,20 +111,20 @@ export default function Hero() {
               <DatePicker
                 value={checkIn}
                 onChange={setCheckIn}
-                label="Anreise"
+                label={t('hero.checkIn')}
               />
 
               <DatePicker
                 value={checkOut}
                 onChange={setCheckOut}
-                label="Abreise"
+                label={t('hero.checkOut')}
                 minDate={checkIn || undefined}
               />
 
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1">
                   <label className="block text-white/60 text-[11px] font-medium tracking-[0.15em] uppercase mb-2 text-left">
-                    Gäste
+                    {t('hero.guests')}
                   </label>
                   <div className="relative">
                     <select
@@ -132,7 +134,7 @@ export default function Hero() {
                     >
                       {[1, 2, 3, 4, 5, 6].map((n) => (
                         <option key={n} value={n}>
-                          {n} {n === 1 ? 'Gast' : 'Gäste'}
+                          {n} {n === 1 ? t('hero.guestSingular') : t('hero.guestPlural')}
                         </option>
                       ))}
                     </select>
@@ -144,9 +146,9 @@ export default function Hero() {
 
                 <button
                   onClick={handleBooking}
-                  className="self-end bg-sage hover:bg-sage-light text-white text-[13px] font-medium tracking-[0.15em] uppercase px-6 md:px-8 py-3 transition-colors duration-300 whitespace-nowrap"
+                  className="sm:self-end bg-sage hover:bg-sage-light text-white text-[13px] font-medium tracking-[0.15em] uppercase px-6 md:px-8 py-3 transition-colors duration-300 whitespace-nowrap w-full sm:w-auto"
                 >
-                  Weiter
+                  {t('hero.continue')}
                 </button>
               </div>
             </div>
@@ -155,7 +157,7 @@ export default function Hero() {
       </div>
 
       <a
-        href="#willkommen"
+        href={`#${t('section.welcome')}`}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center"
       >
         <div className="w-px h-[60px] md:h-[80px] bg-gradient-to-b from-transparent via-sage/60 to-sage/80 animate-pulse" />
