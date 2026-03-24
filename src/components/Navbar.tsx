@@ -44,11 +44,13 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
     <nav
       className={clsx(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        scrolled
-          ? darkMode
-            ? 'bg-bg-primary/95 backdrop-blur-md shadow-sm'
-            : 'bg-warmwhite/95 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
+        mobileOpen
+          ? 'bg-transparent'
+          : scrolled
+            ? darkMode
+              ? 'bg-bg-primary/95 backdrop-blur-md shadow-sm'
+              : 'bg-warmwhite/95 backdrop-blur-md shadow-sm'
+            : 'bg-transparent'
       )}
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
