@@ -68,7 +68,7 @@ export default function Welcome() {
             <img src="/images/exterior-aerial-1.webp" alt={t('welcome.img1Alt')} className="w-full h-full object-cover grayscale scale-110 will-change-transform" loading="lazy" />
           </div>
           <div ref={imgB} className="absolute right-0 lg:right-[-12%] bottom-[6%] lg:bottom-[14%] w-[78%] h-[56%] lg:h-[58%] overflow-hidden shadow-[0_40px_90px_-30px_rgba(0,0,0,0.8)] ring-1 ring-accent/30 z-20">
-            <img src="/images/room-living-1.webp" alt={t('welcome.img3Alt')} className="w-full h-full object-cover scale-110 will-change-transform" loading="lazy" />
+            <img src="/images/tirol-color.webp" alt={t('welcome.img3Alt')} className="w-full h-full object-cover scale-110 will-change-transform" loading="lazy" />
           </div>
         </div>
 
