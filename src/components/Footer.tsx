@@ -13,8 +13,15 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-forest-dark dark:bg-bg-primary text-white/60 relative transition-colors duration-500">
+    <footer className="bg-forest-dark dark:bg-bg-primary text-white/60 relative overflow-hidden transition-colors duration-500">
       <div className="absolute inset-0 grain" />
+
+      {/* oversized watermark word */}
+      <div className="pointer-events-none select-none absolute -bottom-[3vw] inset-x-0 flex justify-center" aria-hidden>
+        <span className="font-serif font-light uppercase leading-none text-white/[0.04] text-[24vw] tracking-[0.02em]">
+          {t('footer.watermark')}
+        </span>
+      </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">

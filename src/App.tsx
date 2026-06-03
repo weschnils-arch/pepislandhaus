@@ -2,13 +2,13 @@ import { useState, useEffect, useMemo } from 'react'
 import { Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Divider from './components/Divider'
 import Welcome from './components/Welcome'
-import FullWidthImage from './components/FullWidthImage'
+import CoreBand from './components/CoreBand'
 import Rooms from './components/Rooms'
 import Experiences from './components/Experiences'
 import Gallery from './components/Gallery'
 import Location from './components/Location'
+import BookingBar from './components/BookingBar'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ChatWidget from './components/ChatWidget'
@@ -70,30 +70,15 @@ export default function App() {
       <div className="bg-warmwhite dark:bg-bg-primary transition-colors duration-500">
         <Navbar darkMode={darkMode} onToggleDark={() => setDarkMode(!darkMode)} />
         <Hero />
-        <div className="relative h-20 -mt-20 z-10 hidden dark:block bg-gradient-to-b from-transparent to-bg-primary" />
-        <Divider linesHidden />
         <Welcome />
-        <Divider />
-        <FullWidthImage
-          src="/images/detail-headboard.webp"
-          alt={t('fullwidth.alt1')}
-          quote={t('fullwidth.quote1')}
-        />
-        <Divider />
+        <CoreBand src="/images/winter-1.webp" title={t('core1.title')} subtitle={t('core1.subtitle')} />
         <Rooms />
-        <Divider />
+        <CoreBand src="/images/room-dining-1.webp" title={t('core2.title')} subtitle={t('core2.subtitle')} objectPosition="center 55%" />
         <Experiences />
-        <Divider />
         <Gallery />
-        <Divider />
-        <FullWidthImage
-          src="/images/detail-antlers.webp"
-          alt={t('fullwidth.alt2')}
-          objectPosition="center 65%"
-        />
-        <Divider />
+        <CoreBand src="/images/room-ruhe.webp" title={t('core3.title')} subtitle={t('core3.subtitle')} objectPosition="center 60%" />
         <Location />
-        <Divider />
+        <BookingBar />
         <Contact />
         <Footer />
         <ChatWidget />

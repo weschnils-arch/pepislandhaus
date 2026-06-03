@@ -63,7 +63,7 @@ export default function Gallery() {
   }, [])
 
   return (
-    <section ref={sectionRef} id={t('section.gallery')} className="overflow-hidden bg-warmwhite dark:bg-bg-primary transition-colors duration-500 pt-8 md:pt-12">
+    <section ref={sectionRef} id={t('section.gallery')} className="overflow-hidden bg-warmwhite dark:bg-bg-primary transition-colors duration-500 pt-8 md:pt-12 pb-24 md:pb-36">
       <div ref={headerRef} className="text-center mb-10 px-6 md:px-[clamp(2rem,8vw,10rem)]">
         <p className="text-sage dark:text-accent/80 text-[12px] font-medium tracking-[0.25em] uppercase mb-5">
           {t('gallery.label')}
