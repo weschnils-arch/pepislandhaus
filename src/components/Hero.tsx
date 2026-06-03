@@ -59,6 +59,13 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/15 pointer-events-none" />
       <div className="absolute inset-0 grain" />
 
+      {/* dark-grey centred vertical band behind the text (racing stripe, 1/3 width, full height) */}
+      <div
+        className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[88%] sm:w-[70%] lg:w-[58%] xl:w-[52%] bg-black/25 z-[5] pointer-events-none"
+        style={{ backdropFilter: 'grayscale(1) brightness(0.6)', WebkitBackdropFilter: 'grayscale(1) brightness(0.6)' }}
+        aria-hidden
+      />
+
       {/* oversized monogram watermark */}
       <div
         ref={monogramRef}
@@ -86,8 +93,6 @@ export default function Hero() {
           >
             {t('hero.cta')}
           </a>
-          {/* dark-grey racing stripe below the hero text */}
-          <div className="w-[3px] h-28 md:h-40 mt-4 bg-[#2b2b2b]/50" aria-hidden />
         </div>
       </div>
 
