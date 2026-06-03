@@ -59,19 +59,15 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/15 pointer-events-none" />
       <div className="absolute inset-0 grain" />
 
-      {/* dark-grey centred vertical band behind the text (racing stripe, 1/3 width, full height) */}
-      <div
-        className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[88%] sm:w-[70%] lg:w-[58%] xl:w-[52%] bg-black/25 z-[5] pointer-events-none"
-        style={{ backdropFilter: 'grayscale(1) brightness(0.6)', WebkitBackdropFilter: 'grayscale(1) brightness(0.6)' }}
-        aria-hidden
-      />
-
       {/* oversized monogram watermark */}
       <div
         ref={monogramRef}
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
       >
-        <span className="font-serif font-light text-white/[0.07] leading-none text-[60vh] -mt-[6vh]">P</span>
+        <div className="relative -mt-[5vh]">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vh] h-[40vh] rounded-full border-2 border-accent/45" />
+          <span className="relative font-serif font-light leading-none text-[55vh]" style={{ WebkitTextStroke: '2.5px rgba(187,156,80,0.7)', color: 'transparent' }}>P</span>
+        </div>
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">

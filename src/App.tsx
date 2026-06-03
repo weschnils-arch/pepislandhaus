@@ -71,9 +71,9 @@ export default function App() {
         <Navbar darkMode={darkMode} onToggleDark={() => setDarkMode(!darkMode)} />
         <Hero />
         <Welcome />
-        <CoreBand src="/images/winter-1.webp" title={t('core1.title')} subtitle={t('core1.subtitle')} />
+        <CoreBand src="/images/natur.webp" title={t('core1.title')} subtitle={t('core1.subtitle')} />
         <Rooms />
-        <CoreBand src="/images/room-dining-1.webp" title={t('core2.title')} subtitle={t('core2.subtitle')} objectPosition="center 55%" />
+        <CoreBand src="/images/genuss.webp" title={t('core2.title')} subtitle={t('core2.subtitle')} objectPosition="center 55%" />
         <Experiences />
         <Gallery />
         <CoreBand src="/images/room-ruhe.webp" title={t('core3.title')} subtitle={t('core3.subtitle')} objectPosition="center 60%" />
