@@ -35,8 +35,9 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       gsap.fromTo(monogramRef.current, { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1, duration: 1.6, ease: 'power3.out', delay: 0.2 })
       // drift the P downward along the box edge while scrolling
-      gsap.fromTo(monogramRef.current, { yPercent: -55 }, {
-        yPercent: 45, ease: 'none',
+      // P rushes down behind the hero title, then eases/levitates toward the next section
+      gsap.fromTo(monogramRef.current, { yPercent: -50 }, {
+        yPercent: 150, ease: 'power3.out',
         scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1 },
       })
       gsap.fromTo(subtitleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.4 })
@@ -73,8 +74,8 @@ export default function Hero() {
       {/* gold P monogram straddling the box's left edge — half on / half off, drifts down on scroll */}
       <div className="hidden lg:flex absolute inset-y-0 left-[71%] -translate-x-1/2 z-[7] pointer-events-none items-center">
         <div ref={monogramRef} className="relative">
-          <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[30vh] h-[30vh] rounded-full border border-accent/45" />
-          <span className="relative font-serif font-light leading-none text-[46vh]" style={{ WebkitTextStroke: '2px rgba(187,156,80,0.78)', color: 'rgba(187,156,80,0.13)' }}>P</span>
+          <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[14vw] h-[14vw] rounded-full border border-accent/45" />
+          <span className="relative font-serif font-light leading-none text-[18vw]" style={{ WebkitTextStroke: '2px rgba(187,156,80,0.78)', color: 'rgba(187,156,80,0.13)' }}>P</span>
         </div>
       </div>
 
