@@ -65,17 +65,33 @@ export default function Location() {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-          <div className="loc-map lg:col-span-3 overflow-hidden bg-cream h-[350px] md:h-[450px]">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10765.2!2d10.52!3d47.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479c7e1b2f8c5555%3A0x1234567890abcdef!2sTannheimer%20Tal!5e0!3m2!1sde!2sat!4v1234567890"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: 'grayscale(30%) contrast(1.05)' }}
-              allowFullScreen
+          <div className="loc-map lg:col-span-3 relative overflow-hidden h-[350px] md:h-[450px] ring-1 ring-black/5 dark:ring-white/10 group">
+            <img
+              src="/images/exterior-summer-1.webp"
+              alt={t('location.mapTitle')}
+              className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title={t('location.mapTitle')}
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+            <div className="absolute inset-0 flex flex-col justify-end p-7 md:p-9">
+              <p className="text-white/75 text-[11px] tracking-[0.3em] uppercase mb-2">
+                {t('location.address.region')}
+              </p>
+              <p className="font-serif text-white text-3xl md:text-4xl font-light mb-5">
+                {t('location.address.name')}
+              </p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Tannheimer+Tal+Tirol"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="self-start inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-white border border-white/40 px-6 py-3 hover:bg-white hover:text-charcoal transition-colors duration-300"
+              >
+                {t('location.openMap')}
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
           </div>
 
           <div className="loc-info lg:col-span-2 flex flex-col justify-center">

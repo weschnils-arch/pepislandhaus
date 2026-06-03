@@ -2,7 +2,6 @@
   "lang": "en",
   "meta.title": "Pepi's Landhaus | Tannheimer Tal",
   "meta.description": "Pepi's Landhaus - Your exclusive holiday retreat in the Tannheimer Tal. Luxury holiday apartments with alpine charm and modern comfort.",
-
   "nav.welcome": "Welcome",
   "nav.rooms": "Rooms",
   "nav.experiences": "Experiences",
@@ -14,7 +13,6 @@
   "nav.lightMode": "Light mode",
   "nav.darkMode": "Dark mode",
   "nav.menu": "Menu",
-
   "section.welcome": "welcome",
   "section.rooms": "rooms",
   "section.experiences": "experiences",
@@ -22,7 +20,6 @@
   "section.location": "location",
   "section.contact": "contact",
   "section.book": "book",
-
   "hero.location": "Tannheimer Tal · Tyrol",
   "hero.title": "Pepi's Landhaus",
   "hero.tagline": "Luxury holiday apartments with alpine charm amidst the Tyrolean mountains",
@@ -34,7 +31,6 @@
   "hero.guestPlural": "Guests",
   "hero.continue": "Continue",
   "hero.datePlaceholder": "DD.MM.YYYY",
-
   "datepicker.months.0": "January",
   "datepicker.months.1": "February",
   "datepicker.months.2": "March",
@@ -54,7 +50,6 @@
   "datepicker.days.4": "Fr",
   "datepicker.days.5": "Sa",
   "datepicker.days.6": "Su",
-
   "welcome.label": "Welcome",
   "welcome.title1": "Your home",
   "welcome.title2": "in the mountains",
@@ -70,7 +65,6 @@
   "welcome.img2Alt": "Cosy bedroom",
   "welcome.img3Alt": "Living area with wooden beams",
   "welcome.img4Alt": "Country house in summer",
-
   "rooms.label": "Accommodation",
   "rooms.title1": "Our ",
   "rooms.title2": "Rooms",
@@ -108,7 +102,6 @@
   "rooms.room4.feature2": "Kitchenette",
   "rooms.room4.feature3": "Bathroom",
   "rooms.room4.feature4": "Parking",
-
   "experiences.label": "Experiences",
   "experiences.title1": "Experience the ",
   "experiences.title2": "Tannheimer Tal",
@@ -126,7 +119,6 @@
   "experiences.exp4.title": "Relaxation & Wellness",
   "experiences.exp4.description": "Relax in nature. Peaceful walks, yoga in the green and healing mountain air for body and soul.",
   "experiences.exp4.season": "Year-round",
-
   "gallery.label": "Impressions",
   "gallery.title": "Moments at the Landhaus",
   "gallery.img1": "Exterior",
@@ -137,7 +129,6 @@
   "gallery.img6": "Balcony",
   "gallery.img7": "Bathroom",
   "gallery.img8": "Panorama",
-
   "location.label": "Getting here",
   "location.title1": "Our ",
   "location.title2": "Location",
@@ -162,7 +153,6 @@
   "location.directions.munich": "From Munich: approx. 2 hours",
   "location.directions.innsbruck": "From Innsbruck: approx. 1.5 hours",
   "location.directions.zurich": "From Zurich: approx. 3 hours",
-
   "contact.label": "Enquiry",
   "contact.title1": "Get in ",
   "contact.title2": "touch",
@@ -195,7 +185,6 @@
   "contact.info.email": "info@pepis-landhaus.at",
   "contact.info.address": "Tannheimer Tal, Tyrol, Austria",
   "contact.alsoOn.title": "Also bookable via",
-
   "footer.description": "Luxury holiday apartments with alpine charm in the heart of the Tannheimer Tal.",
   "footer.nav": "Navigation",
   "footer.contact": "Contact",
@@ -206,61 +195,47 @@
   "footer.imprint": "Imprint",
   "footer.privacy": "Privacy Policy",
   "footer.terms": "Terms & Conditions",
-
   "fullwidth.quote1": "Where the mountains touch the sky",
   "fullwidth.alt1": "Luxurious detail in the country house",
   "fullwidth.alt2": "Antlers in the stairwell",
-
   "hero.cta": "Check availability",
   "hero.scroll": "Discover",
-
   "welcome.scrollWord": "Tannheimer Tal",
   "welcome.bigWord": "Tirol",
   "welcome.closing": "We look forward to welcoming you to our home.",
   "welcome.signature": "Your hosts · Pepi's Landhaus",
-
   "core1.subtitle": "Amid the Tyrolean mountains",
   "core1.title": "Nature",
   "core2.subtitle": "Cuisine & relaxation",
   "core2.title": "Indulgence",
   "core3.subtitle": "Arrive. Breathe.",
   "core3.title": "Calm",
-
   "marquee.label": "Impressions from the valley",
-
   "booking.label": "Booking",
   "booking.title": "Check availability",
   "booking.subtitle": "Choose your dates — we look forward to your visit.",
-
   "footer.watermark": "Landhaus",
-
   "chat.title": "Pepi's Landhaus",
   "chat.subtitle": "Frequently Asked Questions",
   "chat.greeting": "Welcome! How can I help you? Choose a question or write to us.",
   "chat.placeholder": "Your question...",
   "chat.noMatch": "Unfortunately, we don't have an automatic answer to this question. Please contact us directly at info@pepis-landhaus.at or call us at +43 (0) 5675 XXXXX.",
-
   "chat.faq1.q": "Where is the Landhaus located?",
   "chat.faq1.a": "Pepi's Landhaus is located in the beautiful Tannheimer Tal in Tyrol, Austria. From Munich you can reach us in about 2 hours, from Innsbruck in 1.5 hours and from Zurich in about 3 hours.",
-
   "chat.faq2.q": "How can I book?",
   "chat.faq2.a": "You can book directly through our website — simply use the booking form at the top of the page. We are also bookable via Booking.com or Tannheimertal.com. For the best prices, we recommend direct booking!",
-
   "chat.faq3.q": "What rooms are available?",
   "chat.faq3.a": "We offer 4 unique holiday apartments: the Alpine Panorama Suite (65 m²), the Tyrolean Stube (55 m²), Bergkristall (50 m²) and the Enzian Apartment (40 m²). All are furnished with natural materials and great attention to detail.",
-
   "chat.faq4.q": "Can I bring my dog?",
   "chat.faq4.a": "Yes, dogs are very welcome! Please mention this when booking so we can prepare everything for your four-legged friend.",
-
   "chat.faq5.q": "What can I do nearby?",
   "chat.faq5.a": "The Tannheimer Tal offers year-round activities: skiing and snowboarding in winter, hiking and mountain tours in summer. Lake Haldensee is just 8 minutes away, ski resorts 3 minutes, and restaurants only 2 minutes. Over 300 km of marked hiking trails await you!",
-
   "chat.faq6.q": "Is there parking?",
   "chat.faq6.a": "Yes, free parking spaces are available directly at the house for our guests.",
-
   "chat.faq7.q": "What are the check-in / check-out times?",
   "chat.faq7.a": "Check-in is from 3:00 PM, check-out until 10:00 AM. Earlier check-in or later check-out is possible subject to availability — just let us know!",
-
   "chat.faq8.q": "Is there WiFi?",
-  "chat.faq8.a": "Yes, free high-speed WiFi is available in all holiday apartments and throughout the house."
+  "chat.faq8.a": "Yes, free high-speed WiFi is available in all holiday apartments and throughout the house.",
+  "welcome.signatureName": "Pepi's Landhaus",
+  "location.openMap": "View on Google Maps"
 }
