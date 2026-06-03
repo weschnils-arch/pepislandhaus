@@ -86,6 +86,8 @@ export default function Hero() {
           >
             {t('hero.cta')}
           </a>
+          {/* dark-grey racing stripe below the hero text */}
+          <div className="w-[3px] h-28 md:h-40 mt-4 bg-[#2b2b2b]/50" aria-hidden />
         </div>
       </div>
 

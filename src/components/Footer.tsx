@@ -17,8 +17,8 @@ export default function Footer() {
       <div className="absolute inset-0 grain" />
 
       {/* oversized watermark word */}
-      <div className="pointer-events-none select-none absolute -bottom-[3vw] inset-x-0 flex justify-center" aria-hidden>
-        <span className="font-serif font-light uppercase leading-none text-white/[0.04] text-[24vw] tracking-[0.02em]">
+      <div className="pointer-events-none select-none absolute -bottom-[1.5vw] inset-x-0 flex justify-center" aria-hidden>
+        <span className="font-serif font-light uppercase whitespace-nowrap leading-none text-white/[0.05] text-[13vw] tracking-[0.02em]">
           {t('footer.watermark')}
         </span>
       </div>
@@ -26,8 +26,12 @@ export default function Footer() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           <div className="sm:col-span-2 lg:col-span-1">
-            <span className="font-serif text-2xl font-light tracking-wide text-white/80 block mb-6">
-              Pepi's Landhaus
+            <span className="font-serif text-3xl font-light tracking-wide text-white/85 inline-flex items-baseline mb-6">
+              <span className="relative inline-block text-accent">
+                P
+                <span className="pointer-events-none absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 w-[1.45em] h-[1.45em] rounded-full border border-accent/55" />
+              </span>
+              epi's Landhaus
             </span>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               {t('footer.description')}
