@@ -13,6 +13,17 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
+  // cross-fading photo for the menu (same moving images as the hero)
+  const menuImages = [
+    '/images/hero-bedroom.webp',
+    '/images/hero-exterior.webp',
+    '/images/room-living-1.webp',
+    '/images/exterior-summer-1.webp',
+    '/images/room-suite-1.webp',
+    '/images/winter-1.webp',
+  ]
+  const [mSlide, setMSlide] = useState(0)
+
   const navLinks = [
     { label: t('nav.welcome'), href: `#${t('section.welcome')}` },
     { label: t('nav.rooms'), href: `#${t('section.rooms')}` },
@@ -31,6 +42,12 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
   }, [open])
+
+  useEffect(() => {
+    if (!open) return
+    const id = setInterval(() => setMSlide((s) => (s + 1) % menuImages.length), 4000)
+    return () => clearInterval(id)
+  }, [open, menuImages.length])
 
   const onBar = !scrolled || open // white text state
   const textColor = onBar ? 'text-white' : darkMode ? 'text-text-primary' : 'text-charcoal'
@@ -67,7 +84,7 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
             <a
               href={`#${t('section.welcome')}`}
               onClick={() => setOpen(false)}
-              className={clsx('absolute left-1/2 -translate-x-1/2 font-serif text-xl md:text-2xl font-light tracking-wide leading-none transition-colors duration-300', textColor)}
+              className={clsx('hidden sm:block absolute left-1/2 -translate-x-1/2 font-serif text-lg md:text-2xl font-light tracking-wide leading-none transition-colors duration-300', textColor)}
             >
               Pepi's Landhaus
             </a>
@@ -107,16 +124,31 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
       <div
         className={clsx(
           'fixed inset-0 z-50 transition-opacity duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]',
-          open ? 'opacity-100 visible' : 'opacity-0 invisible'
+          open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         )}
       >
-        <div className="absolute inset-0 bg-[#0d0d0d]/90 backdrop-blur-sm" />
-        {/* diagonal photo */}
         <div
-          className="absolute inset-y-0 right-0 w-[60%] md:w-[52%]"
+          className="absolute inset-0 bg-[#0d0d0d] transition-[clip-path] duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{ clipPath: open ? 'inset(0 0% 0 0%)' : 'inset(0 12% 0 54%)' }}
+        />
+        {/* diagonal photo — cross-fading carousel, slides in */}
+        <div
+          className={clsx(
+            'absolute inset-y-0 right-0 w-[60%] md:w-[52%] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]',
+            open ? 'translate-x-0' : 'translate-x-[18%]'
+          )}
           style={{ clipPath: 'polygon(26% 0, 100% 0, 100% 100%, 0% 100%)' }}
         >
-          <img src="/images/room-living-2.webp" alt="" aria-hidden className="w-full h-full object-cover" />
+          {menuImages.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              aria-hidden
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-in-out"
+              style={{ opacity: i === mSlide ? 1 : 0 }}
+            />
+          ))}
           <div className="absolute inset-0 bg-bg-primary/55" />
         </div>
         <div className="absolute inset-0 grain opacity-60" />

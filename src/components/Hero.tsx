@@ -69,7 +69,7 @@ export default function Hero() {
       <div className="absolute inset-0 grain" />
 
       {/* black box on the right that holds all hero info */}
-      <div className="absolute inset-y-0 right-0 left-0 lg:left-auto lg:right-[12%] w-full lg:w-[34%] bg-[#0d0d0d]/90 z-[6]" aria-hidden />
+      <div className="absolute inset-y-0 right-0 left-0 lg:left-auto lg:right-[13.5%] w-full lg:w-[31%] bg-[#0d0d0d]/90 z-[6]" aria-hidden />
 
       {/* gold P monogram straddling the box's left edge — half on / half off, drifts down on scroll */}
       <div className="hidden lg:flex absolute inset-y-0 left-[71%] -translate-x-1/2 z-[7] pointer-events-none items-center">
@@ -80,7 +80,7 @@ export default function Hero() {
       </div>
 
       {/* hero content inside the box */}
-      <div className="absolute inset-y-0 right-0 left-0 lg:left-auto lg:right-[12%] w-full lg:w-[34%] z-[8] flex flex-col items-center justify-center text-center px-8 lg:px-10">
+      <div className="absolute inset-y-0 right-0 left-0 lg:left-auto lg:right-[13.5%] w-full lg:w-[31%] z-[8] flex flex-col items-center justify-center text-center px-8 lg:px-10">
         <p ref={subtitleRef} className="text-white/85 text-[11px] md:text-sm font-medium tracking-[0.4em] uppercase mb-5">
           {t('hero.location')}
         </p>
