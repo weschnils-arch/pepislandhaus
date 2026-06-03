@@ -83,7 +83,6 @@ export default function Gallery() {
       <div className="relative">
         <div
           ref={scrollerRef}
-          data-lenis-prevent
           onMouseDown={onDown}
           onMouseMove={onMove}
           onMouseUp={onUp}

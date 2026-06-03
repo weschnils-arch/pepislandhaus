@@ -21,9 +21,10 @@ export default function Welcome() {
       gsap.fromTo(bigWord.current, { xPercent: -8 }, { xPercent: 8, ease: 'none', scrollTrigger: st })
       gsap.fromTo(ghostWord.current, { xPercent: 7 }, { xPercent: -11, ease: 'none', scrollTrigger: st })
       gsap.fromTo(monogram.current, { yPercent: -14 }, { yPercent: 14, ease: 'none', scrollTrigger: st })
-      gsap.fromTo(imgA.current, { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: st })
-      gsap.fromTo(imgB.current, { yPercent: 10 }, { yPercent: -10, ease: 'none', scrollTrigger: st })
-      gsap.fromTo(imgC.current, { yPercent: -9 }, { yPercent: 9, ease: 'none', scrollTrigger: st })
+      // gentle parallax on the inner <img> (overscanned), so full-fill panels never show gaps
+      gsap.fromTo(imgA.current?.querySelector('img') ?? null, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: st })
+      gsap.fromTo(imgB.current?.querySelector('img') ?? null, { yPercent: 5 }, { yPercent: -5, ease: 'none', scrollTrigger: st })
+      gsap.fromTo(imgC.current?.querySelector('img') ?? null, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: st })
       gsap.utils.toArray<HTMLElement>('.wc-reveal').forEach((el) => {
         gsap.fromTo(el, { opacity: 0, y: 30 },
           { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
@@ -65,64 +66,60 @@ export default function Welcome() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12">
-
-        {/* ============ SCREEN 1 — intro ============ */}
-        <div className="min-h-screen grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-[20vh] pb-16">
-          <div className="relative lg:col-span-8 h-[62vh] md:h-[86vh] order-2 lg:order-1">
-            <div ref={imgA} className="absolute left-0 top-0 w-[82%] h-[66%] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/10 will-change-transform z-10">
-              <img src="/images/exterior-aerial-1.webp" alt={t('welcome.img1Alt')} className="w-full h-full object-cover" loading="lazy" />
-            </div>
-            <div ref={imgB} className="absolute right-0 bottom-0 w-[82%] h-[66%] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-accent/30 will-change-transform z-20">
-              <img src="/images/room-living-1.webp" alt={t('welcome.img3Alt')} className="w-full h-full object-cover" loading="lazy" />
-            </div>
+      {/* ============ SCREEN 1 — intro (left full-fill photos, right text) ============ */}
+      <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 min-h-screen grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-[20vh] pb-16">
+        <div className="relative lg:col-span-8 h-[64vh] md:h-[86vh] order-2 lg:order-1">
+          <div ref={imgA} className="absolute top-0 inset-x-0 h-[calc(50%-6px)] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/10 z-10">
+            <img src="/images/exterior-aerial-1.webp" alt={t('welcome.img1Alt')} className="w-full h-full object-cover scale-110 will-change-transform" loading="lazy" />
           </div>
-
-          <div className="lg:col-span-4 space-y-6 order-1 lg:order-2">
-            <p className="wc-reveal text-sage dark:text-accent text-[12px] font-medium tracking-[0.3em] uppercase">
-              {t('welcome.label')}
-            </p>
-            <h2 className="wc-reveal font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal dark:text-text-primary font-light leading-[1.05] tracking-[-0.01em]">
-              {t('welcome.title1')}<br />
-              <span className="italic text-forest dark:text-accent">{t('welcome.title2')}</span>
-            </h2>
-            <p className="wc-reveal text-charcoal/70 dark:text-text-secondary leading-relaxed max-w-lg">{t('welcome.text1')}</p>
-            <p className="wc-reveal text-charcoal/70 dark:text-text-secondary leading-relaxed max-w-lg">{t('welcome.text2')}</p>
-            <div className="wc-reveal flex flex-wrap gap-10 pt-2">
-              {[1, 2, 3].map((n) => (
-                <div key={n}>
-                  <span className="font-serif text-3xl md:text-4xl text-forest dark:text-accent font-light">{t(`welcome.stat${n}.value`)}</span>
-                  <p className="text-charcoal/50 dark:text-text-tertiary text-[12px] tracking-[0.1em] uppercase mt-1">{t(`welcome.stat${n}.label`)}</p>
-                </div>
-              ))}
-            </div>
+          <div ref={imgB} className="absolute bottom-0 inset-x-0 h-[calc(50%-6px)] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-accent/30 z-10">
+            <img src="/images/room-living-1.webp" alt={t('welcome.img3Alt')} className="w-full h-full object-cover scale-110 will-change-transform" loading="lazy" />
           </div>
         </div>
 
-        {/* ============ SCREEN 2 — closing + signature ============ */}
-        <div className="min-h-screen grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pb-[12vh]">
-          <div className="relative lg:col-span-8 h-[60vh] md:h-[82vh] order-2 lg:order-1">
-            <div ref={imgC} className="absolute inset-0 overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/10 will-change-transform">
-              <img src="/images/room-suite-1.webp" alt={t('welcome.img3Alt')} className="w-full h-full object-cover" loading="lazy" />
-            </div>
-            {/* dark diagonal overlay panel */}
-            <div className="absolute inset-0 pointer-events-none" style={{ clipPath: 'polygon(0 0, 42% 0, 0 100%)', background: 'rgba(10,10,10,0.78)' }} />
+        <div className="lg:col-span-4 space-y-6 order-1 lg:order-2">
+          <p className="wc-reveal text-sage dark:text-accent text-[12px] font-medium tracking-[0.3em] uppercase">
+            {t('welcome.label')}
+          </p>
+          <h2 className="wc-reveal font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal dark:text-text-primary font-light leading-[1.05] tracking-[-0.01em]">
+            {t('welcome.title1')}<br />
+            <span className="italic text-forest dark:text-accent">{t('welcome.title2')}</span>
+          </h2>
+          <p className="wc-reveal text-charcoal/70 dark:text-text-secondary leading-relaxed max-w-lg">{t('welcome.text1')}</p>
+          <p className="wc-reveal text-charcoal/70 dark:text-text-secondary leading-relaxed max-w-lg">{t('welcome.text2')}</p>
+          <div className="wc-reveal flex flex-wrap gap-10 pt-2">
+            {[1, 2, 3].map((n) => (
+              <div key={n}>
+                <span className="font-serif text-3xl md:text-4xl text-forest dark:text-accent font-light">{t(`welcome.stat${n}.value`)}</span>
+                <p className="text-charcoal/50 dark:text-text-tertiary text-[12px] tracking-[0.1em] uppercase mt-1">{t(`welcome.stat${n}.label`)}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </div>
 
-          <div className="lg:col-span-4 space-y-6 order-1 lg:order-2">
-            <p className="wc-reveal font-serif italic text-2xl md:text-3xl text-charcoal/85 dark:text-text-primary/90 leading-snug">
+      {/* ============ SCREEN 2 — full-size image + premium text box ============ */}
+      <div className="relative z-10 min-h-screen w-full flex items-center">
+        <div ref={imgC} className="absolute inset-0 overflow-hidden">
+          <img src="/images/room-suite-1.webp" alt={t('welcome.img3Alt')} className="w-full h-full object-cover scale-110 will-change-transform" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-black/45" />
+        </div>
+
+        <div className="relative w-full max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 flex justify-center lg:justify-end">
+          <div className="wc-reveal w-full max-w-md lg:max-w-lg bg-bg-primary/85 backdrop-blur-xl ring-1 ring-white/12 border border-white/10 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.8)] p-8 md:p-12">
+            <p className="text-accent text-[12px] tracking-[0.3em] uppercase mb-6">{t('welcome.label')}</p>
+            <p className="font-serif italic text-2xl md:text-3xl text-white leading-snug mb-6">
               {t('welcome.closing')}
             </p>
-            <p className="wc-reveal text-charcoal/65 dark:text-text-secondary leading-relaxed max-w-lg">
+            <p className="text-white/70 leading-relaxed mb-8">
               {t('welcome.text2')}
             </p>
-            <div className="wc-reveal pt-2">
-              <p className="text-sage dark:text-accent text-[12px] tracking-[0.2em] uppercase">{t('welcome.signature')}</p>
+            <div className="pt-6 border-t border-white/10">
+              <p className="text-white/60 text-[12px] tracking-[0.2em] uppercase">{t('welcome.signature')}</p>
               <p className="text-accent text-5xl md:text-6xl leading-none mt-3" style={script}>{t('welcome.signatureName')}</p>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   )
