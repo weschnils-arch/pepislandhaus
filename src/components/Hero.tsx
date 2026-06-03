@@ -118,7 +118,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <a href={`#${t('section.welcome')}`} className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 group">
+      <a href={`#${t('section.welcome')}`} className="absolute bottom-7 left-1/2 lg:left-[71%] -translate-x-1/2 z-20 flex flex-col items-center gap-2 group">
         <span className="text-white/70 text-[10px] tracking-[0.25em] uppercase group-hover:text-white transition-colors">{t('hero.scroll')}</span>
         <div className="w-px h-[50px] md:h-[64px] bg-gradient-to-b from-white/70 to-transparent" />
       </a>

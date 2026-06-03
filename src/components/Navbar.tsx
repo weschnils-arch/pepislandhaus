@@ -106,11 +106,11 @@ export default function Navbar({ darkMode, onToggleDark }: NavbarProps) {
       {/* ---- full-screen overlay menu ---- */}
       <div
         className={clsx(
-          'fixed inset-0 z-50 transition-all duration-500',
+          'fixed inset-0 z-50 transition-opacity duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]',
           open ? 'opacity-100 visible' : 'opacity-0 invisible'
         )}
       >
-        <div className="absolute inset-0 bg-bg-primary" />
+        <div className="absolute inset-0 bg-[#0d0d0d]/90 backdrop-blur-sm" />
         {/* diagonal photo */}
         <div
           className="absolute inset-y-0 right-0 w-[60%] md:w-[52%]"
