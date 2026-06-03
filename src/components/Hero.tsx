@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslation } from '../i18n'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Hero() {
   const { t } = useTranslation()
@@ -31,6 +34,11 @@ export default function Hero() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(monogramRef.current, { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1, duration: 1.6, ease: 'power3.out', delay: 0.2 })
+      // drift the P downward along the box edge while scrolling
+      gsap.fromTo(monogramRef.current, { yPercent: -18 }, {
+        yPercent: 55, ease: 'none',
+        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1 },
+      })
       gsap.fromTo(subtitleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.4 })
       gsap.fromTo(titleRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', delay: 0.55 })
       gsap.fromTo(ctaRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.85 })
@@ -62,11 +70,11 @@ export default function Hero() {
       {/* black box on the right that holds all hero info */}
       <div className="absolute inset-y-0 right-0 left-0 lg:left-auto lg:right-[12%] w-full lg:w-[34%] bg-[#0d0d0d]/90 z-[6]" aria-hidden />
 
-      {/* gold P monogram straddling the box's left edge — half on / half off */}
-      <div ref={monogramRef} className="hidden lg:block absolute top-1/2 -translate-y-1/2 left-[54%] -translate-x-1/2 z-[7] pointer-events-none">
-        <div className="relative">
-          <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[42vh] h-[42vh] rounded-full border border-accent/45" />
-          <span className="relative font-serif font-light leading-none text-[66vh]" style={{ WebkitTextStroke: '2px rgba(187,156,80,0.75)', color: 'rgba(187,156,80,0.13)' }}>P</span>
+      {/* gold P monogram straddling the box's left edge — half on / half off, drifts down on scroll */}
+      <div className="hidden lg:flex absolute inset-y-0 left-[60%] -translate-x-1/2 z-[7] pointer-events-none items-center">
+        <div ref={monogramRef} className="relative">
+          <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[30vh] h-[30vh] rounded-full border border-accent/45" />
+          <span className="relative font-serif font-light leading-none text-[46vh]" style={{ WebkitTextStroke: '2px rgba(187,156,80,0.78)', color: 'rgba(187,156,80,0.13)' }}>P</span>
         </div>
       </div>
 
