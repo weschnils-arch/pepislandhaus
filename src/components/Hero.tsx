@@ -59,33 +59,34 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/15 pointer-events-none" />
       <div className="absolute inset-0 grain" />
 
-      {/* oversized monogram watermark */}
-      <div
-        ref={monogramRef}
-        className="absolute inset-0 flex items-center justify-start pointer-events-none"
-      >
-        <div className="relative -ml-[10vw] translate-y-[24vh]">
-          <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[78vh] h-[78vh] rounded-full border border-accent/45" />
-          <span className="relative font-serif font-light leading-none text-[120vh]" style={{ WebkitTextStroke: '2.5px rgba(187,156,80,0.75)', color: 'rgba(187,156,80,0.12)' }}>P</span>
+      {/* black box on the right that holds all hero info */}
+      <div className="absolute inset-y-0 right-0 left-0 lg:left-auto lg:right-[12%] w-full lg:w-[34%] bg-[#0d0d0d]/90 z-[6]" aria-hidden />
+
+      {/* gold P monogram straddling the box's left edge — half on / half off */}
+      <div ref={monogramRef} className="hidden lg:block absolute top-1/2 -translate-y-1/2 left-[54%] -translate-x-1/2 z-[7] pointer-events-none">
+        <div className="relative">
+          <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[42vh] h-[42vh] rounded-full border border-accent/45" />
+          <span className="relative font-serif font-light leading-none text-[66vh]" style={{ WebkitTextStroke: '2px rgba(187,156,80,0.75)', color: 'rgba(187,156,80,0.13)' }}>P</span>
         </div>
       </div>
 
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <p ref={subtitleRef} className="text-white/85 text-[11px] md:text-sm font-medium tracking-[0.4em] uppercase mb-4 md:mb-7">
+      {/* hero content inside the box */}
+      <div className="absolute inset-y-0 right-0 left-0 lg:left-auto lg:right-[12%] w-full lg:w-[34%] z-[8] flex flex-col items-center justify-center text-center px-8 lg:px-10">
+        <p ref={subtitleRef} className="text-white/85 text-[11px] md:text-sm font-medium tracking-[0.4em] uppercase mb-5">
           {t('hero.location')}
         </p>
 
-        <h1 ref={titleRef} className="font-serif text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[120px] font-light leading-[0.95] tracking-[0.01em] mb-8 md:mb-12">
+        <h1 ref={titleRef} className="font-serif text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light leading-[1.0] tracking-[0.01em] mb-7">
           {t('hero.title')}
         </h1>
 
-        <div ref={ctaRef} className="flex flex-col items-center gap-6">
-          <p className="text-white/75 text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
+        <div ref={ctaRef} className="flex flex-col items-center gap-7">
+          <p className="text-white/75 text-sm md:text-base font-light max-w-sm mx-auto leading-relaxed">
             {t('hero.tagline')}
           </p>
           <a
             href={`#${t('section.book')}`}
-            className="inline-block text-[12px] font-medium tracking-[0.25em] uppercase text-white border border-white/45 px-9 py-4 hover:bg-white hover:text-charcoal transition-colors duration-300"
+            className="inline-block text-[12px] font-medium tracking-[0.25em] uppercase text-white border border-white/45 px-8 py-4 hover:bg-white hover:text-charcoal transition-colors duration-300"
           >
             {t('hero.cta')}
           </a>
