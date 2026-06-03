@@ -69,16 +69,16 @@ export default function Welcome() {
 
         {/* ============ SCREEN 1 — intro ============ */}
         <div className="min-h-screen grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-[20vh] pb-16">
-          <div className="relative lg:col-span-7 h-[58vh] md:h-[74vh] order-2 lg:order-1">
-            <div ref={imgA} className="absolute left-0 top-0 w-[74%] h-[58%] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/10 will-change-transform z-10">
+          <div className="relative lg:col-span-8 h-[62vh] md:h-[86vh] order-2 lg:order-1">
+            <div ref={imgA} className="absolute left-0 top-0 w-[82%] h-[66%] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/10 will-change-transform z-10">
               <img src="/images/exterior-aerial-1.webp" alt={t('welcome.img1Alt')} className="w-full h-full object-cover" loading="lazy" />
             </div>
-            <div ref={imgB} className="absolute right-0 bottom-0 w-[74%] h-[58%] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-accent/30 will-change-transform z-20">
+            <div ref={imgB} className="absolute right-0 bottom-0 w-[82%] h-[66%] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-accent/30 will-change-transform z-20">
               <img src="/images/room-living-1.webp" alt={t('welcome.img3Alt')} className="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
 
-          <div className="lg:col-span-5 space-y-6 order-1 lg:order-2">
+          <div className="lg:col-span-4 space-y-6 order-1 lg:order-2">
             <p className="wc-reveal text-sage dark:text-accent text-[12px] font-medium tracking-[0.3em] uppercase">
               {t('welcome.label')}
             </p>
@@ -101,7 +101,7 @@ export default function Welcome() {
 
         {/* ============ SCREEN 2 — closing + signature ============ */}
         <div className="min-h-screen grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pb-[12vh]">
-          <div className="relative lg:col-span-7 h-[56vh] md:h-[72vh] order-2 lg:order-1">
+          <div className="relative lg:col-span-8 h-[60vh] md:h-[82vh] order-2 lg:order-1">
             <div ref={imgC} className="absolute inset-0 overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/10 will-change-transform">
               <img src="/images/room-suite-1.webp" alt={t('welcome.img3Alt')} className="w-full h-full object-cover" loading="lazy" />
             </div>
@@ -109,7 +109,7 @@ export default function Welcome() {
             <div className="absolute inset-0 pointer-events-none" style={{ clipPath: 'polygon(0 0, 42% 0, 0 100%)', background: 'rgba(10,10,10,0.78)' }} />
           </div>
 
-          <div className="lg:col-span-5 space-y-6 order-1 lg:order-2">
+          <div className="lg:col-span-4 space-y-6 order-1 lg:order-2">
             <p className="wc-reveal font-serif italic text-2xl md:text-3xl text-charcoal/85 dark:text-text-primary/90 leading-snug">
               {t('welcome.closing')}
             </p>
