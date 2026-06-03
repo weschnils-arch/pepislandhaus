@@ -64,9 +64,9 @@ export default function Hero() {
         ref={monogramRef}
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
       >
-        <div className="relative -mt-[5vh]">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vh] h-[40vh] rounded-full border-2 border-accent/45" />
-          <span className="relative font-serif font-light leading-none text-[55vh]" style={{ WebkitTextStroke: '2.5px rgba(187,156,80,0.7)', color: 'transparent' }}>P</span>
+        <div className="relative -mt-[4vh]">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[58vh] h-[58vh] rounded-full border-2 border-accent/30" />
+          <span className="relative font-serif font-light leading-none text-[92vh]" style={{ color: 'rgba(187,156,80,0.13)', WebkitTextStroke: '2px rgba(187,156,80,0.4)' }}>P</span>
         </div>
       </div>
 
@@ -76,7 +76,7 @@ export default function Hero() {
         </p>
 
         <h1 ref={titleRef} className="font-serif text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[120px] font-light leading-[0.95] tracking-[0.01em] mb-8 md:mb-12">
-          {t('hero.title')}
+          <span className="text-accent">{t('hero.title').charAt(0)}</span>{t('hero.title').slice(1)}
         </h1>
 
         <div ref={ctaRef} className="flex flex-col items-center gap-6">
