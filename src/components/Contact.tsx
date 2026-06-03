@@ -178,7 +178,7 @@ export default function Contact() {
 
             <div className="border-t border-charcoal/10 dark:border-text-primary/10 pt-8">
               <h3 className="font-serif text-xl text-charcoal dark:text-text-primary font-light mb-4">{t('contact.info.title')}</h3>
-              <div className="space-y-3 text-sm text-charcoal/60">
+              <div className="space-y-3 text-sm text-charcoal/70 dark:text-text-primary/85">
                 <p>
                   <span className="text-charcoal/40 dark:text-text-tertiary text-[11px] tracking-[0.1em] uppercase block mb-1">{t('contact.info.phoneLabel')}</span>
                   {t('contact.info.phone')}
