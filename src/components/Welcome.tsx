@@ -35,7 +35,7 @@ export default function Welcome() {
   }, [])
 
   const outline = { WebkitTextStroke: '1px rgba(255,255,255,0.55)', color: 'transparent' }
-  const goldOutline = { WebkitTextStroke: '2px rgba(187,156,80,0.55)', color: 'transparent' }
+  const goldOutline = { WebkitTextStroke: '2px rgba(187,156,80,0.85)', color: 'transparent' }
   const script = { fontFamily: "'Pinyon Script', cursive" }
 
   return (
@@ -59,10 +59,10 @@ export default function Welcome() {
       </div>
 
       {/* ---- gold P monogram with ring ---- */}
-      <div ref={monogram} className="pointer-events-none select-none absolute left-[1%] top-[46%] z-0 hidden md:block" aria-hidden>
+      <div ref={monogram} className="pointer-events-none select-none absolute left-[1%] top-[16%] z-30 hidden md:block" aria-hidden>
         <div className="relative">
-          <div className="absolute left-[14%] top-1/2 -translate-y-1/2 w-[16vw] h-[16vw] rounded-full border border-accent/25" />
-          <span className="relative font-serif font-light leading-none text-[24vw] lg:text-[20vw]" style={goldOutline}>P</span>
+          <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[14vw] h-[14vw] rounded-full border border-accent/45" />
+          <span className="relative font-serif font-light leading-none text-[22vw] lg:text-[18vw]" style={goldOutline}>P</span>
         </div>
       </div>
 
