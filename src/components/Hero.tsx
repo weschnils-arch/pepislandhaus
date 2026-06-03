@@ -71,7 +71,7 @@ export default function Hero() {
       <div className="absolute inset-y-0 right-0 left-0 lg:left-auto lg:right-[12%] w-full lg:w-[34%] bg-[#0d0d0d]/90 z-[6]" aria-hidden />
 
       {/* gold P monogram straddling the box's left edge — half on / half off, drifts down on scroll */}
-      <div className="hidden lg:flex absolute inset-y-0 left-[60%] -translate-x-1/2 z-[7] pointer-events-none items-center">
+      <div className="hidden lg:flex absolute inset-y-0 left-[71%] -translate-x-1/2 z-[7] pointer-events-none items-center">
         <div ref={monogramRef} className="relative">
           <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[30vh] h-[30vh] rounded-full border border-accent/45" />
           <span className="relative font-serif font-light leading-none text-[46vh]" style={{ WebkitTextStroke: '2px rgba(187,156,80,0.78)', color: 'rgba(187,156,80,0.13)' }}>P</span>
