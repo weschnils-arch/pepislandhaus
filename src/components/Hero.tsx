@@ -39,14 +39,14 @@ export default function Hero() {
   }, [])
 
   return (
-    <section ref={heroRef} className="relative h-[100svh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
+    <section ref={heroRef} className="relative z-20 h-[100svh] min-h-[600px] flex flex-col items-center justify-center">
+      <div className="absolute inset-0 overflow-hidden">
         {heroImages.map((src, i) => (
           <img
             key={src}
             src={src}
             alt="Pepi's Landhaus im Tannheimer Tal"
-            className="absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-[1500ms] ease-in-out"
+            className="absolute inset-0 w-full h-full object-cover grayscale scale-105 transition-opacity duration-[1500ms] ease-in-out"
             style={{ opacity: i === slide ? 1 : 0 }}
             loading={i === 0 ? 'eager' : 'lazy'}
             aria-hidden={i !== slide}
@@ -62,11 +62,11 @@ export default function Hero() {
       {/* oversized monogram watermark */}
       <div
         ref={monogramRef}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        className="absolute inset-0 flex items-center justify-start pointer-events-none"
       >
-        <div className="relative -mt-[4vh]">
-          <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[52vh] h-[52vh] rounded-full border border-accent/50" />
-          <span className="relative font-serif font-light leading-none text-[82vh]" style={{ WebkitTextStroke: '2px rgba(187,156,80,0.8)', color: 'transparent' }}>P</span>
+        <div className="relative -ml-[10vw] translate-y-[24vh]">
+          <div className="absolute left-[16%] top-1/2 -translate-y-1/2 w-[78vh] h-[78vh] rounded-full border border-accent/45" />
+          <span className="relative font-serif font-light leading-none text-[120vh]" style={{ WebkitTextStroke: '2.5px rgba(187,156,80,0.75)', color: 'rgba(187,156,80,0.12)' }}>P</span>
         </div>
       </div>
 
