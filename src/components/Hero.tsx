@@ -35,11 +35,8 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       gsap.fromTo(monogramRef.current, { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1, duration: 1.6, ease: 'power3.out', delay: 0.2 })
       // drift the P downward along the box edge while scrolling
-      // P rushes down behind the hero title, then eases/levitates toward the next section
-      gsap.fromTo(monogramRef.current, { yPercent: -50 }, {
-        yPercent: 150, ease: 'power3.out',
-        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1 },
-      })
+      // P stays put between the CTA and ENTDECKEN (no scroll drift)
+      gsap.set(monogramRef.current, { yPercent: -50 })
       gsap.fromTo(subtitleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.4 })
       gsap.fromTo(titleRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', delay: 0.55 })
       gsap.fromTo(ctaRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.85 })
