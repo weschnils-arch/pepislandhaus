@@ -35,9 +35,9 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       gsap.fromTo(monogramRef.current, { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1, duration: 1.6, ease: 'power3.out', delay: 0.2 })
       // drift the P downward along the box edge while scrolling
-      // P glides down on scroll and STOPS between the CTA and ENTDECKEN, then holds
-      gsap.fromTo(monogramRef.current, { yPercent: -135 }, {
-        yPercent: -50, ease: 'power2.out',
+      // P starts at its perfect spot (between CTA & ENTDECKEN) and drifts only slightly down
+      gsap.fromTo(monogramRef.current, { yPercent: -50 }, {
+        yPercent: -12, ease: 'power2.out',
         scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'center top', scrub: 1 },
       })
       gsap.fromTo(subtitleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.4 })
