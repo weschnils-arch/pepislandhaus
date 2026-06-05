@@ -1,10 +1,6 @@
 import { useEffect } from 'react'
 import { useTranslation } from '../i18n'
 
-// Inquiry form (easyGuestmanagement) — from the client's link document
-const ANFRAGE_URL =
-  'https://booking.easyGuestmanagement.at/describtion.php?code=b1d0c06b51de9ff26c643e12d92f756d442d7486943484b4bc2f6876f1ae1bb8a77928b27a6d77cb4b66d0831e21746724011ef00b90ddabaab6a419cbb11d2e'
-
 export default function BookingBar() {
   const { t } = useTranslation()
 
@@ -54,9 +50,7 @@ export default function BookingBar() {
         </div>
 
         <a
-          href={ANFRAGE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={`#${t('section.contact')}`}
           className="inline-block mt-8 text-[12px] font-medium tracking-[0.2em] uppercase text-forest dark:text-accent border-b border-forest/30 dark:border-accent/30 pb-1 hover:border-forest dark:hover:border-accent transition-colors"
         >
           {t('booking.requestForm')}
