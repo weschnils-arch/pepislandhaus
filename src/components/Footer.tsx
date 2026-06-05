@@ -73,7 +73,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-3 text-sm">
               <a
-                href="https://www.tannheimertal.at"
+                href="https://www.tannheimertal.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-white/40 hover:text-white/70 transition-colors"
@@ -81,7 +81,7 @@ export default function Footer() {
                 {t('footer.tannheimerTourism')}
               </a>
               <a
-                href="https://www.booking.com"
+                href="https://www.booking.com/hotel/at/landhaus-strobl.de.html?aid=356980"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-white/40 hover:text-white/70 transition-colors"
@@ -89,7 +89,7 @@ export default function Footer() {
                 Booking.com
               </a>
               <a
-                href="https://buchung.tannheimertal.com"
+                href="https://buchung.tannheimertal.com/de/detail/6-72172/pepi-s-landhaus?adults=2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-white/40 hover:text-white/70 transition-colors"

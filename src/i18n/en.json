@@ -182,7 +182,7 @@
   "contact.info.emailLabel": "Email",
   "contact.info.addressLabel": "Address",
   "contact.info.phone": "+43 (0) 5675 XXXXX",
-  "contact.info.email": "info@pepis-landhaus.at",
+  "contact.info.email": "Pepissuites@sportstrobl.com",
   "contact.info.address": "Tannheimer Tal, Tyrol, Austria",
   "contact.alsoOn.title": "Also bookable via",
   "footer.description": "Luxury holiday apartments with alpine charm in the heart of the Tannheimer Tal.",
@@ -219,7 +219,7 @@
   "chat.subtitle": "Frequently Asked Questions",
   "chat.greeting": "Welcome! How can I help you? Choose a question or write to us.",
   "chat.placeholder": "Your question...",
-  "chat.noMatch": "Unfortunately, we don't have an automatic answer to this question. Please contact us directly at info@pepis-landhaus.at or call us at +43 (0) 5675 XXXXX.",
+  "chat.noMatch": "Unfortunately, we don't have an automatic answer to this question. Please contact us directly at Pepissuites@sportstrobl.com or call us at +43 (0) 5675 XXXXX.",
   "chat.faq1.q": "Where is the Landhaus located?",
   "chat.faq1.a": "Pepi's Landhaus is located in the beautiful Tannheimer Tal in Tyrol, Austria. From Munich you can reach us in about 2 hours, from Innsbruck in 1.5 hours and from Zurich in about 3 hours.",
   "chat.faq2.q": "How can I book?",
@@ -237,5 +237,6 @@
   "chat.faq8.q": "Is there WiFi?",
   "chat.faq8.a": "Yes, free high-speed WiFi is available in all holiday apartments and throughout the house.",
   "welcome.signatureName": "Pepi's Landhaus",
-  "location.openMap": "View on Google Maps"
+  "location.openMap": "View on Google Maps",
+  "booking.requestForm": "Direct inquiry"
 }

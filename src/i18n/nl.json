@@ -182,7 +182,7 @@
   "contact.info.emailLabel": "E-mail",
   "contact.info.addressLabel": "Adres",
   "contact.info.phone": "+43 (0) 5675 XXXXX",
-  "contact.info.email": "info@pepis-landhaus.at",
+  "contact.info.email": "Pepissuites@sportstrobl.com",
   "contact.info.address": "Tannheimer Tal, Tirol, Oostenrijk",
   "contact.alsoOn.title": "Ook te boeken via",
   "footer.description": "Luxe vakantiewoningen met alpine charme in het hart van het Tannheimer Tal.",
@@ -219,7 +219,7 @@
   "chat.subtitle": "Veelgestelde vragen",
   "chat.greeting": "Welkom! Hoe kan ik u helpen? Kies een vraag of schrijf ons.",
   "chat.placeholder": "Uw vraag...",
-  "chat.noMatch": "Helaas hebben we geen automatisch antwoord op deze vraag. Neem direct contact met ons op via info@pepis-landhaus.at of bel ons op +43 (0) 5675 XXXXX.",
+  "chat.noMatch": "Helaas hebben we geen automatisch antwoord op deze vraag. Neem direct contact met ons op via Pepissuites@sportstrobl.com of bel ons op +43 (0) 5675 XXXXX.",
   "chat.faq1.q": "Waar bevindt zich het landhuis?",
   "chat.faq1.a": "Pepi's Landhaus ligt in het prachtige Tannheimer Tal in Tirol, Oostenrijk. Vanuit München bereikt u ons in ca. 2 uur, vanuit Innsbruck in 1,5 uur en vanuit Zürich in ca. 3 uur.",
   "chat.faq2.q": "Hoe kan ik boeken?",
@@ -237,5 +237,6 @@
   "chat.faq8.q": "Is er WiFi?",
   "chat.faq8.a": "Ja, in alle vakantiewoningen en in het hele huis is gratis high-speed WiFi beschikbaar.",
   "welcome.signatureName": "Pepi's Landhaus",
-  "location.openMap": "Bekijk op Google Maps"
+  "location.openMap": "Bekijk op Google Maps",
+  "booking.requestForm": "Direct aanvragen"
 }

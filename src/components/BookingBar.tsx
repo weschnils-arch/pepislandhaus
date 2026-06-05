@@ -1,23 +1,36 @@
-import { useState } from 'react'
-import DatePicker from './DatePicker'
+import { useEffect } from 'react'
 import { useTranslation } from '../i18n'
+
+// Inquiry form (easyGuestmanagement) — from the client's link document
+const ANFRAGE_URL =
+  'https://booking.easyGuestmanagement.at/describtion.php?code=b1d0c06b51de9ff26c643e12d92f756d442d7486943484b4bc2f6876f1ae1bb8a77928b27a6d77cb4b66d0831e21746724011ef00b90ddabaab6a419cbb11d2e'
 
 export default function BookingBar() {
   const { t } = useTranslation()
-  const [checkIn, setCheckIn] = useState('')
-  const [checkOut, setCheckOut] = useState('')
-  const [guests, setGuests] = useState(2)
 
-  const handleBooking = () => {
-    const baseUrl = 'https://www.seekda.com/de/booking'
-    const params = new URLSearchParams({
-      propertyCode: 'S001697',
-      ...(checkIn && { arrival: checkIn }),
-      ...(checkOut && { departure: checkOut }),
-      adults: guests.toString(),
-    })
-    window.open(`${baseUrl}?${params.toString()}`, '_blank')
-  }
+  // Embed the real Seekda (KBE) booking search widget — propertyCode S001697
+  useEffect(() => {
+    const w = window as any
+    if (!w['kbe-widgets']) {
+      ;(function (t: any, e: any, n: any, s: any) {
+        t['kbe-widgets'] = s
+        t[s] =
+          t[s] ||
+          new Proxy(
+            { q: [] as any[] },
+            { get: (e: any, n: any) => (n in e ? e[n] : function (a: any) { t[s].q.push([n, a]) }) }
+          )
+        const o = e.createElement(n)
+        const r = e.getElementsByTagName(n)[0]
+        o.id = s
+        o.src = 'https://widget-bf.seekda.com/loader.js'
+        o.async = 1
+        r.parentNode.insertBefore(o, r)
+      })(window, document, 'script', '__KBE')
+    }
+    w.__KBE.settings({ id: 'BOOKINGWIDGET', propertyCode: 'S001697' })
+    w.__KBE.searchbar({ id: 'BOOKINGWIDGET' })
+  }, [])
 
   return (
     <section
@@ -35,41 +48,19 @@ export default function BookingBar() {
           {t('booking.subtitle')}
         </p>
 
-        <div className="mt-12 bg-warmwhite dark:bg-bg-tertiary border border-charcoal/10 dark:border-white/10 rounded-sm p-4 md:p-5 shadow-xl text-left">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
-            <DatePicker value={checkIn} onChange={setCheckIn} label={t('hero.checkIn')} />
-            <DatePicker value={checkOut} onChange={setCheckOut} label={t('hero.checkOut')} minDate={checkIn || undefined} />
-            <div className="flex flex-col sm:flex-row gap-3">
-              <div className="flex-1">
-                <label className="block text-charcoal/50 dark:text-text-secondary text-[11px] font-medium tracking-[0.15em] uppercase mb-2">
-                  {t('hero.guests')}
-                </label>
-                <div className="relative">
-                  <select
-                    value={guests}
-                    onChange={(e) => setGuests(Number(e.target.value))}
-                    className="w-full bg-white dark:bg-bg-primary text-charcoal dark:text-text-primary px-4 py-3 text-sm rounded-sm outline-none appearance-none focus:ring-2 focus:ring-accent/40 transition-shadow border border-charcoal/10 dark:border-white/10"
-                  >
-                    {[1, 2, 3, 4, 5, 6].map((n) => (
-                      <option key={n} value={n}>
-                        {n} {n === 1 ? t('hero.guestSingular') : t('hero.guestPlural')}
-                      </option>
-                    ))}
-                  </select>
-                  <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-charcoal/40 dark:text-text-secondary pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
-              <button
-                onClick={handleBooking}
-                className="sm:self-end bg-accent hover:bg-accent-hover text-bg-primary text-[13px] font-medium tracking-[0.15em] uppercase px-6 md:px-8 py-3 transition-colors duration-300 whitespace-nowrap w-full sm:w-auto"
-              >
-                {t('hero.continue')}
-              </button>
-            </div>
-          </div>
+        {/* real Seekda booking search widget */}
+        <div className="mt-12 bg-warmwhite dark:bg-bg-tertiary border border-charcoal/10 dark:border-white/10 rounded-sm p-4 md:p-6 shadow-xl text-left min-h-[88px]">
+          <div data-kbe-searchbar="BOOKINGWIDGET" />
         </div>
+
+        <a
+          href={ANFRAGE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-8 text-[12px] font-medium tracking-[0.2em] uppercase text-forest dark:text-accent border-b border-forest/30 dark:border-accent/30 pb-1 hover:border-forest dark:hover:border-accent transition-colors"
+        >
+          {t('booking.requestForm')}
+        </a>
       </div>
     </section>
   )

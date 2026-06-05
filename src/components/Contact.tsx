@@ -55,7 +55,7 @@ export default function Contact() {
     const body = encodeURIComponent(
       `${t('contact.emailBody.name')}: ${formData.name}\n${t('contact.emailBody.email')}: ${formData.email}\n${t('contact.emailBody.phone')}: ${formData.phone}\n${t('contact.emailBody.arrival')}: ${formData.arrival}\n${t('contact.emailBody.departure')}: ${formData.departure}\n${t('contact.emailBody.guests')}: ${formData.guests}\n\n${t('contact.emailBody.message')}:\n${formData.message}`
     )
-    window.location.href = `mailto:info@pepis-landhaus.at?subject=${subject}&body=${body}`
+    window.location.href = `mailto:Pepissuites@sportstrobl.com?subject=${subject}&body=${body}`
   }
 
   const inputClasses = 'w-full bg-transparent border border-charcoal/15 dark:border-text-primary/12 px-4 py-3 text-sm text-charcoal dark:text-text-primary outline-none focus:border-forest dark:focus:border-accent transition-colors placeholder:text-charcoal/30 dark:placeholder:text-text-tertiary'
@@ -198,7 +198,7 @@ export default function Contact() {
               <h3 className="font-serif text-xl text-charcoal dark:text-text-primary font-light mb-4">{t('contact.alsoOn.title')}</h3>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://www.booking.com"
+                  href="https://www.booking.com/hotel/at/landhaus-strobl.de.html?aid=356980"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[11px] tracking-[0.08em] uppercase text-charcoal/50 dark:text-text-tertiary bg-charcoal/5 dark:bg-text-primary/5 px-4 py-2 hover:bg-charcoal/10 dark:hover:bg-text-primary/10 transition-colors"
@@ -206,7 +206,7 @@ export default function Contact() {
                   Booking.com
                 </a>
                 <a
-                  href="https://buchung.tannheimertal.com"
+                  href="https://buchung.tannheimertal.com/de/detail/6-72172/pepi-s-landhaus?adults=2"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[11px] tracking-[0.08em] uppercase text-charcoal/50 dark:text-text-tertiary bg-charcoal/5 dark:bg-text-primary/5 px-4 py-2 hover:bg-charcoal/10 dark:hover:bg-text-primary/10 transition-colors"
