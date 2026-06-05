@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslation } from '../i18n'
+import { ensureKbe } from '../lib/seekda'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -68,6 +69,11 @@ export default function Rooms() {
     }, sectionRef)
 
     return () => ctx.revert()
+  }, [])
+
+  // Seekda live rooms/rates widget (additional to the static cards)
+  useEffect(() => {
+    ensureKbe().rates({ id: 'BOOKINGWIDGET' })
   }, [])
 
   return (
@@ -140,6 +146,16 @@ export default function Rooms() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Seekda live availability & prices (data-kbe-rates) */}
+        <div className="mt-16 md:mt-20">
+          <h3 className="text-center font-serif text-2xl md:text-3xl text-charcoal dark:text-text-primary font-light mb-8">
+            {t('rooms.liveTitle')}
+          </h3>
+          <div className="bg-warmwhite dark:bg-bg-secondary border border-charcoal/10 dark:border-white/10 rounded-sm p-4 md:p-6 shadow-sm">
+            <div data-kbe-rates="BOOKINGWIDGET" />
+          </div>
         </div>
       </div>
     </section>

@@ -238,5 +238,12 @@
   "chat.faq8.q": "Gibt es WLAN?",
   "chat.faq8.a": "Ja, in allen Ferienwohnungen und im gesamten Haus steht Ihnen kostenloses High-Speed-WLAN zur Verfügung.",
   "welcome.signatureName": "Pepi's Landhaus",
-  "booking.requestForm": "Direkt anfragen"
+  "booking.requestForm": "Direkt anfragen",
+  "nav.offers": "Angebote",
+  "section.offers": "angebote",
+  "offers.label": "Aktuelle",
+  "offers.title1": "Unsere ",
+  "offers.title2": "Angebote",
+  "offers.subtitle": "Profitieren Sie von unseren aktuellen Angeboten und Pauschalen — direkt online buchbar.",
+  "rooms.liveTitle": "Live-Verfügbarkeit & Preise"
 }

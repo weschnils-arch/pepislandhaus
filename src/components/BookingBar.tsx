@@ -1,31 +1,13 @@
 import { useEffect } from 'react'
 import { useTranslation } from '../i18n'
+import { ensureKbe } from '../lib/seekda'
 
 export default function BookingBar() {
   const { t } = useTranslation()
 
   // Embed the real Seekda (KBE) booking search widget — propertyCode S001697
   useEffect(() => {
-    const w = window as any
-    if (!w['kbe-widgets']) {
-      ;(function (t: any, e: any, n: any, s: any) {
-        t['kbe-widgets'] = s
-        t[s] =
-          t[s] ||
-          new Proxy(
-            { q: [] as any[] },
-            { get: (e: any, n: any) => (n in e ? e[n] : function (a: any) { t[s].q.push([n, a]) }) }
-          )
-        const o = e.createElement(n)
-        const r = e.getElementsByTagName(n)[0]
-        o.id = s
-        o.src = 'https://widget-bf.seekda.com/loader.js'
-        o.async = 1
-        r.parentNode.insertBefore(o, r)
-      })(window, document, 'script', '__KBE')
-    }
-    w.__KBE.settings({ id: 'BOOKINGWIDGET', propertyCode: 'S001697' })
-    w.__KBE.searchbar({ id: 'BOOKINGWIDGET' })
+    ensureKbe().searchbar({ id: 'BOOKINGWIDGET' })
   }, [])
 
   return (

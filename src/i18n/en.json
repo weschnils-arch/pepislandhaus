@@ -238,5 +238,12 @@
   "chat.faq8.a": "Yes, free high-speed WiFi is available in all holiday apartments and throughout the house.",
   "welcome.signatureName": "Pepi's Landhaus",
   "location.openMap": "View on Google Maps",
-  "booking.requestForm": "Direct inquiry"
+  "booking.requestForm": "Direct inquiry",
+  "nav.offers": "Offers",
+  "section.offers": "offers",
+  "offers.label": "Current",
+  "offers.title1": "Our ",
+  "offers.title2": "Offers",
+  "offers.subtitle": "Take advantage of our current offers and packages — bookable directly online.",
+  "rooms.liveTitle": "Live availability & prices"
 }

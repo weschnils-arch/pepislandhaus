@@ -238,5 +238,12 @@
   "chat.faq8.a": "Ja, in alle vakantiewoningen en in het hele huis is gratis high-speed WiFi beschikbaar.",
   "welcome.signatureName": "Pepi's Landhaus",
   "location.openMap": "Bekijk op Google Maps",
-  "booking.requestForm": "Direct aanvragen"
+  "booking.requestForm": "Direct aanvragen",
+  "nav.offers": "Aanbiedingen",
+  "section.offers": "aanbiedingen",
+  "offers.label": "Actuele",
+  "offers.title1": "Onze ",
+  "offers.title2": "Aanbiedingen",
+  "offers.subtitle": "Profiteer van onze actuele aanbiedingen en arrangementen — direct online boekbaar.",
+  "rooms.liveTitle": "Live beschikbaarheid & prijzen"
 }

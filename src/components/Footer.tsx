@@ -6,6 +6,7 @@ export default function Footer() {
   const navLinks = [
     { label: t('nav.welcome'), href: `#${t('section.welcome')}` },
     { label: t('nav.rooms'), href: `#${t('section.rooms')}` },
+    { label: t('nav.offers'), href: `#${t('section.offers')}` },
     { label: t('nav.experiences'), href: `#${t('section.experiences')}` },
     { label: t('nav.gallery'), href: `#${t('section.gallery')}` },
     { label: t('nav.location'), href: `#${t('section.location')}` },

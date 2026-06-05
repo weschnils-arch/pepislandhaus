@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import Welcome from './components/Welcome'
 import CoreBand from './components/CoreBand'
 import Rooms from './components/Rooms'
+import Offers from './components/Offers'
 import Experiences from './components/Experiences'
 import Gallery from './components/Gallery'
 import Location from './components/Location'
@@ -73,6 +74,7 @@ export default function App() {
         <Welcome />
         <CoreBand src="/images/natur.webp" title={t('core1.title')} subtitle={t('core1.subtitle')} />
         <Rooms />
+        <Offers />
         <CoreBand src="/images/genuss.webp" title={t('core2.title')} subtitle={t('core2.subtitle')} objectPosition="center 55%" />
         <Experiences />
         <Gallery />
