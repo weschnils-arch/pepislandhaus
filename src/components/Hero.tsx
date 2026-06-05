@@ -19,7 +19,7 @@ export default function Hero() {
       // drift the P downward along the box edge while scrolling
       // P starts up at the eyebrow (Tannheimer Tal · Tirol) and glides down to STOP
       // perfectly centred between the CTA and ENTDECKEN
-      gsap.fromTo(monogramRef.current, { yPercent: -42 }, {
+      gsap.fromTo(monogramRef.current, { yPercent: -45 }, {
         yPercent: 97, ease: 'power2.out',
         scrollTrigger: { trigger: heroRef.current, start: 'top top', end: '55% top', scrub: 1 },
       })
