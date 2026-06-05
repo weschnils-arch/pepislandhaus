@@ -56,7 +56,7 @@ export default function Hero() {
             key={src}
             src={src}
             alt="Pepi's Landhaus im Tannheimer Tal"
-            className="absolute inset-0 w-full h-full object-cover grayscale scale-105 transition-opacity duration-[1500ms] ease-in-out"
+            className="absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-[1500ms] ease-in-out"
             style={{ opacity: i === slide ? 1 : 0 }}
             loading={i === 0 ? 'eager' : 'lazy'}
             aria-hidden={i !== slide}
