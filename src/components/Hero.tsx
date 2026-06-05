@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslation } from '../i18n'
@@ -12,24 +12,6 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
   const monogramRef = useRef<HTMLDivElement>(null)
-
-  // Cross-fading hero carousel (matches reference: fade effect, ~4.5s autoplay)
-  const heroImages = [
-    '/images/hero-bedroom.webp',
-    '/images/hero-exterior.webp',
-    '/images/room-living-1.webp',
-    '/images/exterior-summer-1.webp',
-    '/images/room-suite-1.webp',
-    '/images/winter-1.webp',
-  ]
-  const [slide, setSlide] = useState(0)
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setSlide((s) => (s + 1) % heroImages.length)
-    }, 4500)
-    return () => clearInterval(id)
-  }, [heroImages.length])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -51,17 +33,11 @@ export default function Hero() {
   return (
     <section ref={heroRef} className="relative z-20 h-[100svh] min-h-[600px] flex flex-col items-center justify-center">
       <div className="absolute inset-0 overflow-hidden">
-        {heroImages.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt="Pepi's Landhaus im Tannheimer Tal"
-            className="absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-[1500ms] ease-in-out"
-            style={{ opacity: i === slide ? 1 : 0 }}
-            loading={i === 0 ? 'eager' : 'lazy'}
-            aria-hidden={i !== slide}
-          />
-        ))}
+        <img
+          src="/images/hero-bedroom.webp"
+          alt="Pepi's Landhaus im Tannheimer Tal"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
       </div>
 
       <div className="absolute inset-x-0 top-0 h-[40%] bg-gradient-to-b from-black/60 via-black/20 to-transparent pointer-events-none" />
@@ -101,22 +77,6 @@ export default function Hero() {
             {t('hero.cta')}
           </a>
         </div>
-      </div>
-
-      {/* carousel pagination dots — reference style */}
-      <div className="absolute bottom-7 left-6 md:left-10 z-20 flex items-center gap-2">
-        {heroImages.map((src, i) => (
-          <button
-            key={src}
-            onClick={() => setSlide(i)}
-            aria-label={`Bild ${i + 1}`}
-            className="h-1.5 rounded-full transition-all duration-500"
-            style={{
-              width: i === slide ? '26px' : '6px',
-              backgroundColor: i === slide ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.45)',
-            }}
-          />
-        ))}
       </div>
 
       <a href={`#${t('section.welcome')}`} className="absolute bottom-7 left-1/2 lg:left-[71%] -translate-x-1/2 z-20 flex flex-col items-center gap-2 group">
