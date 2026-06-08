@@ -19,7 +19,10 @@ export function ensureKbe(): any {
       o.async = 1
       r.parentNode.insertBefore(o, r)
     })(window, document, 'script', '__KBE')
+    // settings() must run EXACTLY ONCE — calling it again (e.g. once per
+    // mounted widget) crashes the Seekda widget ("reading 'language'") and
+    // leaves every widget on the page empty. Keep it inside this one-time guard.
+    w.__KBE.settings({ id: 'BOOKINGWIDGET', propertyCode: 'S001697' })
   }
-  w.__KBE.settings({ id: 'BOOKINGWIDGET', propertyCode: 'S001697' })
   return w.__KBE
 }
